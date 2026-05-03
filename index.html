@@ -1,177 +1,667 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DumplingZen™ | Squishy Anti-Stress</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-<style>
-body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: #fffaf8;
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DumplingZen – Le Squishy Anti-Stress Viral</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    padding: 15px 30px;
-    background: white;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-}
+    :root {
+      --coral: #F06449;
+      --coral-light: #f9a58c;
+      --pink-bg: #FFF0EE;
+      --pink-mid: #FFD9D0;
+      --dark: #1a1a1a;
+      --gray: #666;
+      --white: #fff;
+      --gold: #F5A623;
+    }
 
-.logo {
-    font-weight: 600;
-    color: #ff6b5a;
-}
+    body {
+      font-family: 'Nunito', sans-serif;
+      color: var(--dark);
+      background: var(--white);
+    }
 
-.cta {
-    background: #ff6b5a;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 8px;
-}
+    /* ── BANNER ── */
+    .banner {
+      background: var(--pink-bg);
+      text-align: center;
+      padding: 10px;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--dark);
+      letter-spacing: .2px;
+    }
 
-.hero {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    padding: 40px;
-}
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 60px;
+      background: var(--white);
+      border-bottom: 1px solid #f2e8e6;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--dark);
+      text-decoration: none;
+    }
+    .logo span { color: var(--coral); }
+    .logo-icon {
+      width: 38px; height: 38px;
+      background: var(--pink-bg);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+    }
+    .nav-links {
+      display: flex; gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--dark);
+      transition: color .2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--coral); }
+    .nav-right { display: flex; align-items: center; gap: 16px; }
+    .cart-btn {
+      position: relative;
+      background: none; border: none;
+      font-size: 22px; cursor: pointer;
+    }
+    .cart-badge {
+      position: absolute; top: -4px; right: -6px;
+      background: var(--coral); color: #fff;
+      font-size: 10px; font-weight: 800;
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .btn-cta {
+      background: var(--coral);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 12px 24px;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: background .2s, transform .15s;
+      font-family: 'Nunito', sans-serif;
+    }
+    .btn-cta:hover { background: #d94f35; transform: translateY(-1px); }
 
-.hero-text {
-    flex: 1;
-}
+    /* ── HERO ── */
+    .hero {
+      background: var(--pink-bg);
+      display: flex;
+      align-items: center;
+      padding: 60px 60px 60px 80px;
+      gap: 40px;
+      position: relative;
+      overflow: hidden;
+      min-height: 440px;
+    }
+    .hero-text { flex: 1; max-width: 520px; }
+    .hero-text h1 {
+      font-size: 44px;
+      font-weight: 900;
+      line-height: 1.15;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+    .hero-text h1 .highlight { color: var(--coral); }
+    .hero-sub {
+      font-size: 15px;
+      color: #555;
+      margin: 14px 0 22px;
+      line-height: 1.6;
+    }
+    .hero-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 24px;
+      margin-bottom: 28px;
+    }
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .feature-item .icon { font-size: 16px; }
+    .btn-hero {
+      background: var(--coral);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 16px 32px;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+      font-family: 'Nunito', sans-serif;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background .2s, transform .15s, box-shadow .2s;
+      box-shadow: 0 6px 20px rgba(240,100,73,.35);
+    }
+    .btn-hero:hover { background: #d94f35; transform: translateY(-2px); box-shadow: 0 10px 28px rgba(240,100,73,.45); }
+    .hero-stars {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 18px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .stars { color: var(--gold); font-size: 18px; letter-spacing: 1px; }
 
-.hero-text h1 {
-    font-size: 36px;
-}
+    /* Hero image side */
+    .hero-img {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    .hero-img img {
+      max-width: 480px;
+      width: 100%;
+      border-radius: 16px;
+      object-fit: cover;
+    }
+    .badge-50 {
+      position: absolute;
+      top: 10px; right: 20px;
+      background: var(--coral);
+      color: #fff;
+      width: 90px; height: 90px;
+      border-radius: 50%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      font-weight: 900;
+      box-shadow: 0 4px 16px rgba(240,100,73,.4);
+      text-align: center;
+      line-height: 1.1;
+    }
+    .badge-50 .pct { font-size: 30px; }
+    .badge-50 .txt { font-size: 9px; text-transform: uppercase; letter-spacing: .5px; }
 
-.hero-text p {
-    margin: 20px 0;
-}
+    /* Sparkles */
+    .sparkle {
+      position: absolute;
+      font-size: 24px;
+      animation: spin 6s linear infinite;
+      opacity: .7;
+    }
+    @keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
 
-.hero img {
-    width: 350px;
-    border-radius: 20px;
-}
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      background: var(--white);
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      padding: 20px 60px;
+      border-bottom: 1px solid #f2e8e6;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 40px;
+      border-right: 1px solid #f2e8e6;
+    }
+    .trust-item:last-child { border-right: none; }
+    .trust-icon {
+      font-size: 26px;
+      color: var(--coral);
+    }
+    .trust-item strong { font-size: 14px; font-weight: 800; display: block; }
+    .trust-item span { font-size: 12px; color: var(--gray); }
 
-.btn {
-    background: #ff6b5a;
-    color: white;
-    padding: 15px 25px;
-    border: none;
-    border-radius: 10px;
-    font-size: 16px;
-    cursor: pointer;
-}
+    /* ── OFFERS ── */
+    .offers {
+      padding: 60px 60px 50px;
+      text-align: center;
+      background: var(--white);
+    }
+    .offers h2 { font-size: 30px; font-weight: 900; margin-bottom: 32px; }
+    .offer-cards {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    .offer-card {
+      background: var(--white);
+      border: 2px solid #f2e8e6;
+      border-radius: 20px;
+      padding: 28px 24px;
+      width: 240px;
+      text-align: center;
+      position: relative;
+      transition: border-color .2s, transform .2s, box-shadow .2s;
+    }
+    .offer-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,.08); }
+    .offer-card.popular {
+      border-color: var(--coral);
+      box-shadow: 0 8px 28px rgba(240,100,73,.18);
+    }
+    .popular-badge {
+      position: absolute;
+      top: -16px; left: 50%; transform: translateX(-50%);
+      background: var(--coral);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 5px 16px;
+      border-radius: 50px;
+      white-space: nowrap;
+      letter-spacing: .3px;
+    }
+    .offer-img { font-size: 48px; margin-bottom: 10px; min-height: 60px; display:flex; align-items:center; justify-content:center; }
+    .offer-card h3 { font-size: 17px; font-weight: 800; margin-bottom: 8px; }
+    .offer-price {
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--dark);
+    }
+    .offer-old {
+      font-size: 14px;
+      color: #bbb;
+      text-decoration: line-through;
+      margin-bottom: 16px;
+    }
+    .btn-order {
+      background: var(--coral);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 12px 32px;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      font-family: 'Nunito', sans-serif;
+      width: 100%;
+      transition: background .2s, transform .15s;
+    }
+    .btn-order:hover { background: #d94f35; transform: translateY(-1px); }
 
-.section {
-    padding: 50px 20px;
-    text-align: center;
-}
+    /* ── REVIEWS ── */
+    .reviews {
+      padding: 50px 60px;
+      background: var(--white);
+    }
+    .reviews h2 { font-size: 30px; font-weight: 900; text-align: center; margin-bottom: 28px; }
+    .review-cards {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+    }
+    .review-card {
+      background: var(--white);
+      border: 1px solid #f2e8e6;
+      border-radius: 16px;
+      padding: 22px 24px;
+      flex: 1;
+      max-width: 340px;
+    }
+    .reviewer {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .reviewer-avatar {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: var(--pink-mid);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .reviewer-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .reviewer-name { font-size: 13px; font-weight: 800; }
+    .review-stars { color: var(--gold); font-size: 15px; }
+    .review-text { font-size: 14px; color: #555; line-height: 1.6; margin-top: 8px; }
 
-.offers {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-}
+    /* ── BOTTOM FEATURES ── */
+    .bottom-features {
+      background: var(--pink-bg);
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      padding: 30px 60px;
+    }
+    .bf-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 10px;
+      flex: 1;
+      padding: 16px 20px;
+      border-right: 1px solid var(--pink-mid);
+    }
+    .bf-item:last-child { border-right: none; }
+    .bf-icon {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      box-shadow: 0 2px 10px rgba(0,0,0,.06);
+    }
+    .bf-item p { font-size: 13px; font-weight: 800; color: var(--dark); line-height: 1.4; }
 
-.card {
-    background: white;
-    padding: 20px;
-    border-radius: 15px;
-    width: 250px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-}
-
-.price {
-    color: #ff3b3b;
-    font-size: 22px;
-}
-
-.reviews {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-}
-
-.review {
-    background: white;
-    padding: 15px;
-    border-radius: 10px;
-    width: 250px;
-}
-
-footer {
-    background: #222;
-    color: white;
-    text-align: center;
-    padding: 20px;
-}
-</style>
+    /* Dumpling SVG illustrations */
+    .dumpling-svg { display: inline-block; }
+  </style>
 </head>
 <body>
-<header>
-<div class="logo">DumplingZen™</div>
-<div class="cta">Commander</div>
-</header>
+
+<!-- BANNER -->
+<div class="banner">Livraison rapide depuis la France 🚚</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">
+    <div class="logo-icon">🥟</div>
+    <span>Dumpling</span><span style="color:var(--coral)">Zen</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#" class="active">Accueil</a></li>
+    <li><a href="#">Boutique</a></li>
+    <li><a href="#">Avis clients</a></li>
+    <li><a href="#">FAQ</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="cart-btn">
+      🛒
+      <span class="cart-badge">0</span>
+    </button>
+    <button class="btn-cta">Commander maintenant</button>
+  </div>
+</nav>
+
+<!-- HERO -->
 <section class="hero">
-<div class="hero-text">
-<h1>Le Squishy Anti-Stress Viral 🔥</h1>
-<p>Ultra satisfaisant, relaxant et adoré sur TikTok. Réduit le stress instantanément.</p>
-</div>
-<img src="https://m.media-amazon.com/images/I/71example.jpg">
+  <div class="hero-text">
+    <h1>
+      Le Squishy Anti-Stress<br>
+      Viral qui fait fondre<br>
+      <span class="highlight">tout le monde !</span>
+    </h1>
+    <p class="hero-sub">
+      Ultra doux, super satisfaisant et 100% irrésistible.<br>
+      Réduit le stress, l'anxiété et améliore la concentration.
+    </p>
+    <div class="hero-features">
+      <div class="feature-item"><span class="icon">🧠</span> Effet relaxant immédiat</div>
+      <div class="feature-item"><span class="icon">❤️</span> Adorable &amp; kawaii</div>
+      <div class="feature-item"><span class="icon">😊</span> Parfait pour adultes &amp; enfants</div>
+      <div class="feature-item"><span class="icon">🌿</span> Matériau sûr &amp; sans BPA</div>
+    </div>
+    <button class="btn-hero">Je veux le mien maintenant 🛒</button>
+    <div class="hero-stars">
+      <span class="stars">★★★★★</span>
+      <span>+1 000 clients satisfaits</span>
+    </div>
+  </div>
+
+  <div class="hero-img">
+    <!-- Placeholder illustration using emoji/SVG since real product image isn't available -->
+    <div style="position:relative; display:flex; align-items:center; justify-content:center; width:100%;">
+      <svg width="420" height="320" viewBox="0 0 420 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Bamboo steamer base -->
+        <ellipse cx="210" cy="210" rx="140" ry="50" fill="#E8A04A"/>
+        <rect x="70" y="160" width="280" height="60" rx="20" fill="#D4892A"/>
+        <rect x="70" y="140" width="280" height="30" rx="10" fill="#E8A04A"/>
+        <!-- Steamer lid -->
+        <ellipse cx="210" cy="135" rx="140" ry="50" fill="#E8A04A"/>
+        <ellipse cx="210" cy="115" rx="140" ry="50" fill="#D4892A"/>
+        <ellipse cx="210" cy="110" rx="130" ry="44" fill="#E8A04A"/>
+        <ellipse cx="210" cy="100" rx="40" ry="16" fill="#D4892A"/>
+        <!-- Dumpling in bowl -->
+        <ellipse cx="210" cy="195" rx="65" ry="55" fill="#FFF5F0"/>
+        <ellipse cx="210" cy="185" rx="60" ry="55" fill="#FFF0EC"/>
+        <!-- Blush -->
+        <ellipse cx="190" cy="205" rx="10" ry="7" fill="#FFB8B0" opacity="0.6"/>
+        <ellipse cx="230" cy="205" rx="10" ry="7" fill="#FFB8B0" opacity="0.6"/>
+        <!-- Eyes -->
+        <ellipse cx="197" cy="192" rx="4" ry="5" fill="#333"/>
+        <ellipse cx="223" cy="192" rx="4" ry="5" fill="#333"/>
+        <!-- Smile -->
+        <path d="M 200 206 Q 210 215 220 206" stroke="#333" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <!-- Dumpling top folds -->
+        <path d="M 185 165 Q 210 150 235 165" stroke="#E0C8B8" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <!-- Hand holding small dumpling on right -->
+        <ellipse cx="340" cy="220" rx="30" ry="28" fill="#FFF0EC"/>
+        <ellipse cx="340" cy="212" rx="27" ry="26" fill="#FFF5F0"/>
+        <ellipse cx="330" cy="224" rx="7" ry="5" fill="#FFB8B0" opacity="0.6"/>
+        <ellipse cx="350" cy="224" rx="7" ry="5" fill="#FFB8B0" opacity="0.6"/>
+        <ellipse cx="334" cy="213" rx="3" ry="3.5" fill="#333"/>
+        <ellipse cx="346" cy="213" rx="3" ry="3.5" fill="#333"/>
+        <path d="M 336 222 Q 340 228 344 222" stroke="#333" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <!-- Skin hand -->
+        <path d="M 320 248 Q 340 265 360 248 L 370 230 Q 360 240 340 235 Q 320 240 310 230 Z" fill="#F5C5A3"/>
+        <!-- Sparkles -->
+        <text x="80" y="180" font-size="22" fill="#FFD700" opacity="0.8">✦</text>
+        <text x="355" y="155" font-size="18" fill="#FFD700" opacity="0.7">✦</text>
+        <text x="130" y="260" font-size="14" fill="#FFD700" opacity="0.6">✦</text>
+      </svg>
+
+      <div class="badge-50">
+        <span class="pct">-50%</span>
+        <span class="txt">OFFRE<br>LIMITÉE</span>
+      </div>
+    </div>
+  </div>
 </section>
-<section class="section">
-<h2>Pourquoi tout le monde adore 😍</h2>
-<p>
-✔ Anti-stress immédiat<br>
-✔ Texture satisfaisante<br>
-✔ Design kawaii unique
-</p>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item">
+    <div class="trust-icon">🚚</div>
+    <div>
+      <strong>Livraison rapide</strong>
+      <span>Expédition sous 24h</span>
+    </div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon">🔒</div>
+    <div>
+      <strong>Paiement sécurisé</strong>
+      <span>Par carte bancaire</span>
+    </div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon">🔄</div>
+    <div>
+      <strong>Satisfait ou remboursé</strong>
+      <span>30 jours pour changer d'avis</span>
+    </div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon">🎧</div>
+    <div>
+      <strong>Support 7/7</strong>
+      <span>Nous sommes là pour vous</span>
+    </div>
+  </div>
+</div>
+
+<!-- OFFERS -->
+<section class="offers">
+  <h2>Choisissez votre offre</h2>
+  <div class="offer-cards">
+    <!-- 1 Dumpling -->
+    <div class="offer-card">
+      <div class="offer-img">
+        <svg width="80" height="70" viewBox="0 0 80 70" fill="none">
+          <ellipse cx="40" cy="48" rx="32" ry="28" fill="#FFF0EC"/>
+          <ellipse cx="40" cy="38" rx="28" ry="26" fill="#FFF5F2"/>
+          <ellipse cx="31" cy="44" rx="6" ry="4" fill="#FFB8B0" opacity="0.6"/>
+          <ellipse cx="49" cy="44" rx="6" ry="4" fill="#FFB8B0" opacity="0.6"/>
+          <ellipse cx="34" cy="36" rx="3" ry="3.5" fill="#333"/>
+          <ellipse cx="46" cy="36" rx="3" ry="3.5" fill="#333"/>
+          <path d="M 36 46 Q 40 52 44 46" stroke="#333" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M 25 22 Q 40 12 55 22" stroke="#E0C8B8" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <ellipse cx="40" cy="18" rx="8" ry="6" fill="#F5A623" opacity="0.8"/>
+        </svg>
+      </div>
+      <h3>1 Dumpling</h3>
+      <div class="offer-price">9,99€</div>
+      <div class="offer-old">19,99€</div>
+      <button class="btn-order">Commander</button>
+    </div>
+
+    <!-- 2 Dumplings (popular) -->
+    <div class="offer-card popular">
+      <div class="popular-badge">🔥 LE PLUS POPULAIRE 🔥</div>
+      <div class="offer-img">
+        <svg width="120" height="70" viewBox="0 0 120 70" fill="none">
+          <!-- left -->
+          <ellipse cx="38" cy="48" rx="28" ry="24" fill="#FFF0EC"/>
+          <ellipse cx="38" cy="38" rx="24" ry="22" fill="#FFF5F2"/>
+          <ellipse cx="30" cy="44" rx="5" ry="3.5" fill="#FFB8B0" opacity="0.6"/>
+          <ellipse cx="46" cy="44" rx="5" ry="3.5" fill="#FFB8B0" opacity="0.6"/>
+          <ellipse cx="32" cy="36" rx="2.5" ry="3" fill="#333"/>
+          <ellipse cx="44" cy="36" rx="2.5" ry="3" fill="#333"/>
+          <path d="M 34 45 Q 38 50 42 45" stroke="#333" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          <path d="M 22 20 Q 38 10 54 20" stroke="#E0C8B8" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <ellipse cx="38" cy="16" rx="7" ry="5" fill="#F5A623" opacity="0.8"/>
+          <!-- right -->
+          <ellipse cx="82" cy="48" rx="28" ry="24" fill="#FFF0EC"/>
+          <ellipse cx="82" cy="38" rx="24" ry="22" fill="#FFF5F2"/>
+          <ellipse cx="74" cy="44" rx="5" ry="3.5" fill="#FFB8B0" opacity="0.6"/>
+          <ellipse cx="90" cy="44" rx="5" ry="3.5" fill="#FFB8B0" opacity="0.6"/>
+          <ellipse cx="76" cy="36" rx="2.5" ry="3" fill="#333"/>
+          <ellipse cx="88" cy="36" rx="2.5" ry="3" fill="#333"/>
+          <path d="M 78 45 Q 82 50 86 45" stroke="#333" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          <path d="M 66 20 Q 82 10 98 20" stroke="#E0C8B8" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <ellipse cx="82" cy="16" rx="7" ry="5" fill="#F5A623" opacity="0.8"/>
+        </svg>
+      </div>
+      <h3>2 Dumplings</h3>
+      <div class="offer-price">17,99€</div>
+      <div class="offer-old">39,98€</div>
+      <button class="btn-order">Commander</button>
+    </div>
+
+    <!-- 3 Dumplings -->
+    <div class="offer-card">
+      <div class="offer-img">
+        <svg width="150" height="75" viewBox="0 0 150 75" fill="none">
+          <!-- left small -->
+          <ellipse cx="28" cy="55" rx="22" ry="19" fill="#FFF0EC"/>
+          <ellipse cx="28" cy="46" rx="19" ry="17" fill="#FFF5F2"/>
+          <ellipse cx="22" cy="51" rx="4" ry="3" fill="#FFB8B0" opacity="0.6"/>
+          <ellipse cx="34" cy="51" rx="4" ry="3" fill="#FFB8B0" opacity="0.6"/>
+          <ellipse cx="24" cy="44" rx="2" ry="2.5" fill="#333"/>
+          <ellipse cx="32" cy="44" rx="2" ry="2.5" fill="#333"/>
+          <path d="M 25 52 Q 28 56 31 52" stroke="#333" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <ellipse cx="28" cy="26" rx="6" ry="4" fill="#F5A623" opacity="0.8"/>
+          <!-- center big -->
+          <ellipse cx="75" cy="50" rx="30" ry="26" fill="#FFF0EC"/>
+          <ellipse cx="75" cy="40" rx="26" ry="24" fill="#FFF5F2"/>
+          <ellipse cx="66" cy="46" rx="6" ry="4" fill="#FFB8B0" opacity="0.6"/>
+          <ellipse cx="84" cy="46" rx="6" ry="4" fill="#FFB8B0" opacity="0.6"/>
+          <ellipse cx="69" cy="38" rx="3" ry="3.5" fill="#333"/>
+          <ellipse cx="81" cy="38" rx="3" ry="3.5" fill="#333"/>
+          <path d="M 71 47 Q 75 53 79 47" stroke="#333" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <ellipse cx="75" cy="17" rx="8" ry="6" fill="#F5A623" opacity="0.8"/>
+          <!-- right small -->
+          <ellipse cx="122" cy="55" rx="22" ry="19" fill="#FFF0EC"/>
+          <ellipse cx="122" cy="46" rx="19" ry="17" fill="#FFF5F2"/>
+          <ellipse cx="116" cy="51" rx="4" ry="3" fill="#FFB8B0" opacity="0.6"/>
+          <ellipse cx="128" cy="51" rx="4" ry="3" fill="#FFB8B0" opacity="0.6"/>
+          <ellipse cx="118" cy="44" rx="2" ry="2.5" fill="#333"/>
+          <ellipse cx="126" cy="44" rx="2" ry="2.5" fill="#333"/>
+          <path d="M 119 52 Q 122 56 125 52" stroke="#333" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <ellipse cx="122" cy="26" rx="6" ry="4" fill="#F5A623" opacity="0.8"/>
+        </svg>
+      </div>
+      <h3>3 Dumplings</h3>
+      <div class="offer-price">24,99€</div>
+      <div class="offer-old">59,97€</div>
+      <button class="btn-order">Commander</button>
+    </div>
+  </div>
 </section>
-<section class="section">
-<h2>Choisis ton offre 🔥</h2>
-<div class="offers">
-<div class="card">
-<h3>1 Dumpling</h3>
-<p class="price">9,99€</p>
-<button class="btn" onclick="buy()">Commander</button>
-</div>
-<div class="card">
-<h3>2 Dumplings ⭐</h3>
-<p class="price">17,99€</p>
-<button class="btn" onclick="buy()">Commander</button>
-</div>
-<div class="card">
-<h3>3 Dumplings 🔥</h3>
-<p class="price">24,99€</p>
-<button class="btn" onclick="buy()">Commander</button>
-</div>
-</div>
+
+<!-- REVIEWS -->
+<section class="reviews">
+  <h2>Ils adorent déjà !</h2>
+  <div class="review-cards">
+    <div class="review-card">
+      <div class="reviewer">
+        <div class="reviewer-avatar" style="background:#c8a882; color:#fff; font-weight:800; font-size:18px;">S</div>
+        <div>
+          <div class="reviewer-name">Sophie L.</div>
+          <div class="review-stars">★★★★★</div>
+        </div>
+      </div>
+      <p class="review-text">"Tellement mignon et satisfaisant ! Je ne peux plus m'en passer."</p>
+    </div>
+    <div class="review-card">
+      <div class="reviewer">
+        <div class="reviewer-avatar" style="background:#8a9fc8; color:#fff; font-weight:800; font-size:18px;">T</div>
+        <div>
+          <div class="reviewer-name">Thomas B.</div>
+          <div class="review-stars">★★★★★</div>
+        </div>
+      </div>
+      <p class="review-text">"Parfait pour déstresser au travail. Livraison rapide et produit top !"</p>
+    </div>
+    <div class="review-card">
+      <div class="reviewer">
+        <div class="reviewer-avatar" style="background:#c8a8b8; color:#fff; font-weight:800; font-size:18px;">C</div>
+        <div>
+          <div class="reviewer-name">Camille D.</div>
+          <div class="review-stars">★★★★★</div>
+        </div>
+      </div>
+      <p class="review-text">"Mon fils adore, et moi aussi 😍 Qualité incroyable !"</p>
+    </div>
+  </div>
 </section>
-<section class="section">
-<h2>Avis clients ⭐⭐⭐⭐⭐</h2>
-<div class="reviews">
-<div class="review">"Incroyable 😍"</div>
-<div class="review">"Exactement comme TikTok"</div>
-<div class="review">"Je recommande 100%"</div>
+
+<!-- BOTTOM FEATURES -->
+<div class="bottom-features">
+  <div class="bf-item">
+    <div class="bf-icon">🧠</div>
+    <p>Soulage le stress<br>et l'anxiété</p>
+  </div>
+  <div class="bf-item">
+    <div class="bf-icon">💡</div>
+    <p>Améliore la concentration<br>et la créativité</p>
+  </div>
+  <div class="bf-item">
+    <div class="bf-icon">🏠</div>
+    <p>Idéal pour la maison,<br>le bureau et les études</p>
+  </div>
+  <div class="bf-item">
+    <div class="bf-icon">🎁</div>
+    <p>Un cadeau original<br>qui fait toujours plaisir</p>
+  </div>
 </div>
-</section>
-<section class="section">
-<h2>⏳ Offre limitée</h2>
-<button class="btn" onclick="buy()">Profiter maintenant</button>
-</section>
-<footer>
-© 2026 DumplingZen™
-</footer>
-<script>
-function buy() {
-    window.location.href = "https://buy.stripe.com/test"; 
-}
-</script>
+
 </body>
 </html>
