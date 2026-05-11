@@ -1,1568 +1,925 @@
-<!DOCTYPE html>
+<!-- ========================================================= -->
+<!-- CBD CONNECTION — FULL PREMIUM REBRANDING FRONT SECTION -->
+<!-- VERSION : DARK LUXURY / CALI PREMIUM / ULTRA MODERN -->
+<!-- ========================================================= -->
 
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>DumplingZen — Le Squishy Anti-Stress</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
-<style>
-/* ─── RESET ─── */
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-
-/* ─── TOKENS ─── */
-:root{
-–c:  #F06449;
-–c2: #FF8B72;
-–c3: #FFD4CB;
-–ink:#1C1512;
-–muted:#7A6560;
-–bg: #FFFAF9;
-–card:#FFFFFF;
-–pink:#FFF0EE;
-–gold:#F5A623;
-–r:   20px;
-–r2:  40px;
-–ease: cubic-bezier(.22,1,.36,1);
-–slow: cubic-bezier(.16,1,.3,1);
-}
-
-/* ─── BASE ─── */
-body{
-font-family:‘DM Sans’,sans-serif;
-background:var(–bg);
-color:var(–ink);
-overflow-x:hidden;
-cursor:none;
-}
-h1,h2,h3,h4{font-family:‘Playfair Display’,serif;}
-a{text-decoration:none;color:inherit;}
-button{font-family:‘DM Sans’,sans-serif;cursor:none;}
-img{display:block;width:100%;}
-
-/* ─── CUSTOM CURSOR ─── */
-#cursor{
-position:fixed;
-width:12px;height:12px;
-background:var(–c);
-border-radius:50%;
-pointer-events:none;
-z-index:99999;
-transform:translate(-50%,-50%);
-transition:width .25s var(–ease),height .25s var(–ease),background .25s;
-mix-blend-mode:normal;
-}
-#cursor-ring{
-position:fixed;
-width:40px;height:40px;
-border:1.5px solid var(–c);
-border-radius:50%;
-pointer-events:none;
-z-index:99998;
-transform:translate(-50%,-50%);
-transition:transform .1s,width .3s var(–ease),height .3s var(–ease),opacity .3s,border-color .3s;
-opacity:.6;
-}
-body:has(button:hover) #cursor,
-body:has(a:hover) #cursor{width:6px;height:6px;background:var(–ink);}
-body:has(button:hover) #cursor-ring,
-body:has(a:hover) #cursor-ring{width:60px;height:60px;opacity:.3;}
-
-/* ─── NOISE OVERLAY ─── */
-body::before{
-content:’’;
-position:fixed;inset:0;
-background-image:url(“data:image/svg+xml,%3Csvg viewBox=‘0 0 256 256’ xmlns=‘http://www.w3.org/2000/svg’%3E%3Cfilter id=‘n’%3E%3CfeTurbulence type=‘fractalNoise’ baseFrequency=‘0.9’ numOctaves=‘4’ stitchTiles=‘stitch’/%3E%3C/filter%3E%3Crect width=‘100%25’ height=‘100%25’ filter=‘url(%23n)’ opacity=‘1’/%3E%3C/svg%3E”);
-opacity:.018;
-pointer-events:none;
-z-index:9997;
-}
-
-/* ─── ANNOUNCEMENT BAR ─── */
-.announce{
-background:var(–ink);
-color:#fff;
-font-size:12px;
-font-weight:500;
-letter-spacing:.08em;
-text-transform:uppercase;
-text-align:center;
-padding:11px 20px;
-position:relative;
-overflow:hidden;
-}
-.announce-track{
-display:inline-flex;gap:80px;
-animation:marquee 18s linear infinite;
-white-space:nowrap;
-}
-.announce-track span{opacity:.5;}
-@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
-/* ─── NAV ─── */
-nav{
-position:sticky;top:0;z-index:1000;
-display:flex;align-items:center;justify-content:space-between;
-padding:0 48px;
-height:72px;
-background:rgba(255,250,249,.88);
-backdrop-filter:blur(20px) saturate(180%);
-border-bottom:1px solid rgba(240,100,73,.1);
-transition:box-shadow .3s;
-}
-nav.scrolled{box-shadow:0 4px 32px rgba(0,0,0,.06);}
-
-.logo{
-display:flex;align-items:center;gap:10px;
-font-family:‘Playfair Display’,serif;
-font-size:20px;font-weight:900;
-color:var(–ink);
-}
-.logo-mark{
-width:36px;height:36px;
-background:linear-gradient(135deg,var(–c),var(–c2));
-border-radius:10px;
-display:flex;align-items:center;justify-content:center;
-font-size:18px;
-box-shadow:0 4px 12px rgba(240,100,73,.3);
-}
-.logo em{color:var(–c);font-style:normal;}
-
-.nav-links{
-display:flex;gap:36px;list-style:none;
-}
-.nav-links a{
-font-size:13.5px;font-weight:500;
-letter-spacing:.02em;
-color:var(–muted);
-position:relative;
-transition:color .2s;
-}
-.nav-links a::after{
-content:’’;
-position:absolute;bottom:-2px;left:0;
-width:0;height:1.5px;
-background:var(–c);
-transition:width .3s var(–ease);
-}
-.nav-links a:hover{color:var(–ink);}
-.nav-links a:hover::after{width:100%;}
-.nav-links a.active{color:var(–c);}
-.nav-links a.active::after{width:100%;}
-
-.nav-actions{display:flex;align-items:center;gap:12px;}
-.nav-cart{
-position:relative;width:40px;height:40px;
-background:none;border:none;
-display:flex;align-items:center;justify-content:center;
-font-size:19px;border-radius:50%;
-transition:background .2s;
-}
-.nav-cart:hover{background:var(–pink);}
-.cart-dot{
-position:absolute;top:6px;right:6px;
-width:8px;height:8px;
-background:var(–c);border-radius:50%;
-border:2px solid var(–bg);
-}
-.nav-cta{
-background:var(–ink);color:#fff;
-border:none;border-radius:50px;
-padding:11px 22px;
-font-size:13px;font-weight:600;
-letter-spacing:.03em;
-transition:background .2s,transform .2s,box-shadow .2s;
-}
-.nav-cta:hover{background:var(–c);transform:translateY(-1px);box-shadow:0 8px 24px rgba(240,100,73,.35);}
-
-/* Hamburger */
-.hamburger{
-display:none;flex-direction:column;gap:5px;
-background:none;border:none;padding:4px;
-}
-.hamburger span{
-display:block;width:22px;height:2px;
-background:var(–ink);border-radius:2px;
-transition:all .3s var(–ease);
-}
-.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
-.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-
-.mobile-menu{
-display:none;position:fixed;
-top:72px;left:0;right:0;bottom:0;
-background:var(–bg);z-index:999;
-flex-direction:column;padding:32px 28px;gap:0;
-overflow-y:auto;
-}
-.mobile-menu.open{display:flex;}
-.mobile-menu a{
-font-size:28px;font-family:‘Playfair Display’,serif;font-weight:700;
-color:var(–ink);padding:16px 0;
-border-bottom:1px solid rgba(0,0,0,.06);
-transition:color .2s,padding-left .2s;
-}
-.mobile-menu a:hover{color:var(–c);padding-left:8px;}
-.mobile-menu .m-cta{
-margin-top:32px;
-background:var(–c);color:#fff;
-border:none;border-radius:50px;
-padding:18px;font-size:16px;font-weight:700;
-width:100%;text-align:center;
-box-shadow:0 8px 28px rgba(240,100,73,.35);
-}
-
-/* ─── HERO ─── */
-.hero{
-min-height:calc(100vh - 108px);
-display:grid;grid-template-columns:1fr 1fr;
-align-items:center;
-padding:0 0 0 80px;
-overflow:hidden;
-position:relative;
-}
-
-/* hero bg decorations */
-.hero::before{
-content:’’;
-position:absolute;
-right:-100px;top:-80px;
-width:600px;height:600px;
-background:radial-gradient(circle,rgba(240,100,73,.12) 0%,transparent 70%);
-border-radius:50%;
-pointer-events:none;
-}
-.hero::after{
-content:’’;
-position:absolute;
-left:30%;bottom:-120px;
-width:400px;height:400px;
-background:radial-gradient(circle,rgba(245,166,35,.08) 0%,transparent 70%);
-border-radius:50%;
-pointer-events:none;
-}
-
-.hero-left{padding-right:60px;}
-
-.hero-eyebrow{
-display:inline-flex;align-items:center;gap:8px;
-background:var(–pink);
-border:1px solid var(–c3);
-border-radius:50px;
-padding:7px 16px;
-font-size:11.5px;font-weight:600;
-letter-spacing:.08em;text-transform:uppercase;
-color:var(–c);
-margin-bottom:28px;
-animation:fadeUp .6s var(–ease) both;
-}
-.hero-eyebrow .dot{
-width:6px;height:6px;
-background:var(–c);border-radius:50%;
-animation:pulse 2s ease-in-out infinite;
-}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
-
-.hero h1{
-font-size:clamp(40px,5vw,68px);
-font-weight:900;
-line-height:1.05;
-letter-spacing:-.02em;
-color:var(–ink);
-margin-bottom:24px;
-animation:fadeUp .6s .1s var(–ease) both;
-}
-.hero h1 em{
-font-style:italic;
-color:var(–c);
-display:block;
-}
-
-.hero-desc{
-font-size:16px;font-weight:400;
-color:var(–muted);line-height:1.75;
-max-width:440px;
-margin-bottom:36px;
-animation:fadeUp .6s .2s var(–ease) both;
-}
-
-.hero-pills{
-display:flex;flex-wrap:wrap;gap:8px;
-margin-bottom:40px;
-animation:fadeUp .6s .25s var(–ease) both;
-}
-.pill{
-display:inline-flex;align-items:center;gap:6px;
-background:var(–card);
-border:1px solid rgba(0,0,0,.08);
-border-radius:50px;
-padding:8px 16px;
-font-size:13px;font-weight:500;
-color:var(–ink);
-box-shadow:0 2px 8px rgba(0,0,0,.04);
-}
-
-.hero-actions{
-display:flex;align-items:center;gap:16px;
-animation:fadeUp .6s .3s var(–ease) both;
-}
-.btn-primary{
-position:relative;overflow:hidden;
-background:var(–c);color:#fff;
-border:none;border-radius:50px;
-padding:18px 36px;
-font-size:15px;font-weight:700;
-letter-spacing:.02em;
-display:inline-flex;align-items:center;gap:10px;
-transition:transform .25s var(–ease),box-shadow .25s;
-box-shadow:0 8px 32px rgba(240,100,73,.4), 0 2px 8px rgba(240,100,73,.2);
-}
-.btn-primary::before{
-content:’’;
-position:absolute;inset:0;
-background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.25) 50%,transparent 70%);
-transform:translateX(-100%);
-transition:transform .5s var(–ease);
-}
-.btn-primary:hover::before{transform:translateX(100%);}
-.btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(240,100,73,.45), 0 4px 12px rgba(240,100,73,.3);}
-.btn-primary .arrow{transition:transform .25s var(–ease);}
-.btn-primary:hover .arrow{transform:translateX(4px);}
-
-.btn-ghost{
-background:none;border:1.5px solid rgba(0,0,0,.12);
-color:var(–ink);border-radius:50px;
-padding:17px 28px;font-size:15px;font-weight:500;
-display:inline-flex;align-items:center;gap:8px;
-transition:all .25s var(–ease);
-}
-.btn-ghost:hover{border-color:var(–c);color:var(–c);background:var(–pink);}
-
-.hero-social{
-display:flex;align-items:center;gap:12px;
-margin-top:44px;
-animation:fadeUp .6s .35s var(–ease) both;
-}
-.star-row{display:flex;gap:2px;}
-.star-row span{color:var(–gold);font-size:14px;}
-.hero-social p{font-size:13px;color:var(–muted);}
-.hero-social strong{color:var(–ink);}
-.avatar-stack{display:flex;}
-.avatar{
-width:32px;height:32px;border-radius:50%;
-border:2px solid var(–bg);
-background:linear-gradient(135deg,var(–c3),var(–c2));
-margin-left:-8px;
-display:flex;align-items:center;justify-content:center;
-font-size:12px;font-weight:700;color:#fff;
-overflow:hidden;
-}
-.avatar:first-child{margin-left:0;}
-
-/* Hero right — visual */
-.hero-right{
-position:relative;
-height:calc(100vh - 108px);
-background:linear-gradient(160deg,#FFF0EE 0%,#FFE4DE 60%,#FFD4CB 100%);
-display:flex;align-items:center;justify-content:center;
-overflow:hidden;
-}
-
-.hero-blob{
-position:absolute;
-border-radius:50%;
-filter:blur(60px);
-pointer-events:none;
-}
-.hero-blob-1{
-width:320px;height:320px;
-background:rgba(240,100,73,.2);
-top:10%;right:5%;
-animation:float1 8s ease-in-out infinite;
-}
-.hero-blob-2{
-width:200px;height:200px;
-background:rgba(245,166,35,.15);
-bottom:15%;left:10%;
-animation:float2 10s ease-in-out infinite;
-}
-@keyframes float1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-20px,30px) scale(1.1)}}
-@keyframes float2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(15px,-20px) scale(1.08)}}
-
-/* Floating product card */
-.product-visual{
-position:relative;
-z-index:2;
-animation:heroFloat 6s ease-in-out infinite;
-}
-@keyframes heroFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
-
-.product-plate{
-width:340px;height:340px;
-background:rgba(255,255,255,.6);
-backdrop-filter:blur(20px);
-border-radius:50%;
-display:flex;align-items:center;justify-content:center;
-border:1px solid rgba(255,255,255,.8);
-box-shadow:
-0 40px 80px rgba(240,100,73,.15),
-0 0 0 1px rgba(255,255,255,.6),
-inset 0 1px 0 rgba(255,255,255,.9);
-position:relative;
-}
-
-/* Main Dumpling SVG */
-.main-dumpling{font-size:130px;line-height:1;filter:drop-shadow(0 20px 40px rgba(240,100,73,.25));}
-
-/* Floating tags */
-.float-tag{
-position:absolute;
-background:rgba(255,255,255,.9);
-backdrop-filter:blur(12px);
-border-radius:16px;
-padding:12px 16px;
-border:1px solid rgba(255,255,255,.9);
-box-shadow:0 8px 32px rgba(0,0,0,.08);
-display:flex;align-items:center;gap:10px;
-white-space:nowrap;
-}
-.float-tag .tag-icon{font-size:22px;}
-.float-tag .tag-label{font-size:11px;font-weight:500;color:var(–muted);display:block;}
-.float-tag .tag-val{font-size:14px;font-weight:700;color:var(–ink);}
-
-.tag-stress{top:12%;left:-30px;animation:tagFloat1 7s ease-in-out infinite;}
-.tag-rating{bottom:20%;left:-20px;animation:tagFloat2 8s ease-in-out infinite;}
-.tag-sold{top:20%;right:-30px;animation:tagFloat3 6s ease-in-out infinite;}
-.tag-ship{bottom:12%;right:-10px;animation:tagFloat1 9s ease-in-out infinite;}
-
-@keyframes tagFloat1{0%,100%{transform:translate(0,0)}50%{transform:translate(-6px,10px)}}
-@keyframes tagFloat2{0%,100%{transform:translate(0,0)}50%{transform:translate(8px,-8px)}}
-@keyframes tagFloat3{0%,100%{transform:translate(0,0)}50%{transform:translate(-5px,12px)}}
-
-/* Discount badge */
-.discount-badge{
-position:absolute;
-top:-16px;right:20px;
-width:80px;height:80px;
-background:linear-gradient(135deg,var(–c),#FF4520);
-border-radius:50%;
-display:flex;flex-direction:column;
-align-items:center;justify-content:center;
-color:#fff;font-weight:900;
-box-shadow:0 8px 24px rgba(240,100,73,.5);
-border:3px solid var(–bg);
-z-index:3;
-animation:badgeSpin 20s linear infinite;
-}
-@keyframes badgeSpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-.discount-badge .d-pct{font-size:22px;line-height:1;}
-.discount-badge .d-txt{font-size:8px;letter-spacing:.05em;text-transform:uppercase;}
-
-/* Hero sparkles */
-.sparkle-el{
-position:absolute;font-size:0;
-width:6px;height:6px;
-background:var(–gold);border-radius:50%;
-pointer-events:none;
-}
-.s1{top:15%;right:20%;animation:sparkleAnim 3s ease-in-out infinite;}
-.s2{top:60%;right:8%;animation:sparkleAnim 4s .5s ease-in-out infinite;}
-.s3{bottom:25%;left:22%;animation:sparkleAnim 3.5s 1s ease-in-out infinite;}
-@keyframes sparkleAnim{
-0%,100%{transform:scale(1) rotate(0deg);opacity:.6;}
-50%{transform:scale(2.5) rotate(180deg);opacity:1;}
-}
-
-@keyframes fadeUp{
-from{opacity:0;transform:translateY(24px);}
-to{opacity:1;transform:translateY(0);}
-}
-
-/* ─── TRUST STRIP ─── */
-.trust-strip{
-background:var(–ink);
-padding:0;
-overflow:hidden;
-}
-.trust-inner{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-}
-.trust-cell{
-display:flex;align-items:center;gap:14px;
-padding:24px 32px;
-border-right:1px solid rgba(255,255,255,.07);
-transition:background .25s;
-}
-.trust-cell:last-child{border-right:none;}
-.trust-cell:hover{background:rgba(255,255,255,.04);}
-.trust-cell-icon{
-width:42px;height:42px;flex-shrink:0;
-background:rgba(255,255,255,.08);
-border-radius:12px;
-display:flex;align-items:center;justify-content:center;
-font-size:18px;
-}
-.trust-cell strong{
-display:block;font-size:13.5px;font-weight:600;
-color:#fff;margin-bottom:2px;
-}
-.trust-cell span{font-size:12px;color:rgba(255,255,255,.45);}
-
-/* ─── OFFERS ─── */
-.offers-section{
-padding:100px 80px;
-position:relative;
-}
-.section-header{
-text-align:center;
-margin-bottom:64px;
-}
-.section-label{
-display:inline-flex;align-items:center;gap:8px;
-font-size:11px;font-weight:600;
-letter-spacing:.12em;text-transform:uppercase;
-color:var(–c);margin-bottom:16px;
-}
-.section-label::before,.section-label::after{
-content:’’;
-width:28px;height:1px;
-background:var(–c);opacity:.5;
-}
-.section-header h2{
-font-size:clamp(32px,4vw,52px);
-font-weight:900;letter-spacing:-.02em;
-color:var(–ink);line-height:1.1;
-}
-.section-header p{
-font-size:16px;color:var(–muted);
-margin-top:14px;max-width:480px;margin-inline:auto;
-line-height:1.7;
-}
-
-.offer-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:20px;
-max-width:1000px;
-margin:0 auto;
-}
-
-.offer-card{
-background:var(–card);
-border:1.5px solid rgba(0,0,0,.06);
-border-radius:28px;
-padding:36px 28px;
-text-align:center;
-position:relative;
-transition:transform .35s var(–ease),box-shadow .35s var(–ease),border-color .25s;
-overflow:hidden;
-}
-.offer-card::before{
-content:’’;
-position:absolute;inset:0;
-background:linear-gradient(160deg,rgba(240,100,73,.04) 0%,transparent 60%);
-opacity:0;
-transition:opacity .35s;
-}
-.offer-card:hover{
-transform:translateY(-10px);
-border-color:rgba(240,100,73,.25);
-box-shadow:0 24px 64px rgba(240,100,73,.12), 0 8px 24px rgba(0,0,0,.06);
-}
-.offer-card:hover::before{opacity:1;}
-
-.offer-card.featured{
-background:var(–ink);
-border-color:var(–ink);
-box-shadow:0 24px 64px rgba(28,21,18,.25);
-}
-.offer-card.featured:hover{
-transform:translateY(-14px);
-box-shadow:0 40px 80px rgba(28,21,18,.3);
-border-color:var(–ink);
-}
-
-.pop-badge{
-position:absolute;top:-1px;left:50%;transform:translateX(-50%);
-background:linear-gradient(90deg,var(–c),var(–c2));
-color:#fff;font-size:10px;font-weight:700;
-letter-spacing:.08em;text-transform:uppercase;
-padding:6px 20px;border-radius:0 0 14px 14px;
-}
-
-.offer-emoji{
-font-size:56px;margin-bottom:20px;
-display:block;
-filter:drop-shadow(0 8px 16px rgba(240,100,73,.2));
-transition:transform .35s var(–ease);
-}
-.offer-card:hover .offer-emoji{transform:scale(1.12) rotate(-5deg);}
-
-.offer-name{
-font-family:‘Playfair Display’,serif;
-font-size:22px;font-weight:700;
-color:var(–ink);margin-bottom:6px;
-}
-.offer-card.featured .offer-name{color:#fff;}
-
-.offer-qty{
-font-size:12px;font-weight:500;
-letter-spacing:.06em;text-transform:uppercase;
-color:var(–muted);margin-bottom:24px;
-}
-.offer-card.featured .offer-qty{color:rgba(255,255,255,.5);}
-
-.offer-price-block{margin-bottom:28px;}
-.offer-price{
-font-size:42px;font-weight:900;
-font-family:‘Playfair Display’,serif;
-color:var(–ink);line-height:1;
-}
-.offer-card.featured .offer-price{color:#fff;}
-.offer-old{
-font-size:14px;color:var(–muted);
-text-decoration:line-through;
-margin-top:4px;
-font-family:‘DM Mono’,monospace;
-}
-.offer-card.featured .offer-old{color:rgba(255,255,255,.35);}
-.offer-save{
-display:inline-block;
-background:rgba(240,100,73,.12);
-color:var(–c);
-font-size:11px;font-weight:700;
-letter-spacing:.05em;
-padding:4px 10px;border-radius:50px;
-margin-top:6px;
-}
-.offer-card.featured .offer-save{background:rgba(255,255,255,.12);color:rgba(255,255,255,.8);}
-
-.offer-perks{
-list-style:none;
-margin-bottom:28px;
-text-align:left;
-}
-.offer-perks li{
-display:flex;align-items:center;gap:8px;
-font-size:13px;font-weight:500;
-color:var(–muted);
-padding:5px 0;
-border-bottom:1px solid rgba(0,0,0,.04);
-}
-.offer-card.featured .offer-perks li{color:rgba(255,255,255,.55);border-bottom-color:rgba(255,255,255,.07);}
-.offer-perks li:last-child{border-bottom:none;}
-.perk-check{
-width:18px;height:18px;flex-shrink:0;
-background:rgba(240,100,73,.1);
-border-radius:50%;
-display:flex;align-items:center;justify-content:center;
-font-size:10px;color:var(–c);
-}
-.offer-card.featured .perk-check{background:rgba(255,255,255,.12);color:rgba(255,255,255,.7);}
-
-.btn-offer{
-width:100%;padding:15px;
-border:none;border-radius:50px;
-font-size:14px;font-weight:700;
-letter-spacing:.03em;
-transition:all .25s var(–ease);
-display:flex;align-items:center;justify-content:center;gap:8px;
-}
-.btn-offer-dark{
-background:var(–ink);color:#fff;
-}
-.btn-offer-dark:hover{background:var(–c);box-shadow:0 8px 24px rgba(240,100,73,.35);transform:translateY(-2px);}
-.btn-offer-light{
-background:rgba(255,255,255,.12);
-color:#fff;
-border:1.5px solid rgba(255,255,255,.2);
-}
-.btn-offer-light:hover{background:#fff;color:var(–ink);box-shadow:0 8px 24px rgba(255,255,255,.2);transform:translateY(-2px);}
-
-/* ─── SOCIAL PROOF ─── */
-.proof-section{
-background:var(–pink);
-padding:80px;
-border-top:1px solid var(–c3);
-border-bottom:1px solid var(–c3);
-}
-.proof-numbers{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:1px;
-background:rgba(240,100,73,.15);
-border-radius:24px;
-overflow:hidden;
-margin-bottom:64px;
-border:1px solid rgba(240,100,73,.15);
-}
-.proof-num{
-background:var(–pink);
-padding:40px;text-align:center;
-transition:background .25s;
-}
-.proof-num:hover{background:#FFE8E3;}
-.proof-num .num{
-font-family:‘Playfair Display’,serif;
-font-size:clamp(40px,5vw,64px);
-font-weight:900;color:var(–c);
-line-height:1;display:block;
-margin-bottom:8px;
-}
-.proof-num p{font-size:14px;font-weight:500;color:var(–muted);}
-
-/* Reviews */
-.reviews-label{
-text-align:center;
-margin-bottom:36px;
-}
-.reviews-label h3{
-font-size:30px;font-weight:700;
-font-style:italic;color:var(–ink);
-margin-bottom:6px;
-}
-.reviews-label p{font-size:14px;color:var(–muted);}
-
-.reviews-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:20px;
-}
-.review-card{
-background:var(–card);
-border-radius:24px;
-padding:28px;
-border:1px solid rgba(0,0,0,.05);
-box-shadow:0 4px 24px rgba(0,0,0,.04);
-transition:transform .3s var(–ease),box-shadow .3s;
-}
-.review-card:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(0,0,0,.08);}
-
-.rev-top{
-display:flex;align-items:center;gap:12px;
-margin-bottom:16px;
-}
-.rev-avatar{
-width:46px;height:46px;border-radius:50%;
-font-size:18px;font-weight:800;color:#fff;
-display:flex;align-items:center;justify-content:center;
-flex-shrink:0;
-font-family:‘Playfair Display’,serif;
-}
-.rev-meta strong{font-size:14px;font-weight:700;display:block;margin-bottom:2px;}
-.rev-meta .rev-date{font-size:11px;color:var(–muted);}
-.rev-stars{display:flex;gap:2px;margin-bottom:14px;}
-.rev-stars span{color:var(–gold);font-size:14px;}
-.rev-body{
-font-size:14px;line-height:1.7;
-color:#4A3F3C;
-font-style:italic;
-}
-.rev-verified{
-display:inline-flex;align-items:center;gap:4px;
-margin-top:14px;
-font-size:11px;font-weight:600;
-color:var(–c);
-letter-spacing:.04em;
-}
-
-/* ─── HOW IT WORKS ─── */
-.how-section{
-padding:100px 80px;
-background:var(–bg);
-}
-.steps-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:40px;
-max-width:900px;
-margin:0 auto;
-}
-.step{
-text-align:center;
-padding:40px 24px;
-border-radius:24px;
-transition:background .25s;
-position:relative;
-}
-.step:hover{background:var(–pink);}
-.step::after{
-content:‘→’;
-position:absolute;
-right:-24px;top:50%;transform:translateY(-50%);
-font-size:20px;color:var(–c3);
-display:none;
-}
-.steps-grid .step:nth-child(1)::after,
-.steps-grid .step:nth-child(2)::after{display:block;}
-
-.step-num{
-width:48px;height:48px;
-background:linear-gradient(135deg,var(–c),var(–c2));
-border-radius:16px;
-display:flex;align-items:center;justify-content:center;
-font-size:18px;font-weight:900;color:#fff;
-margin:0 auto 20px;
-box-shadow:0 8px 20px rgba(240,100,73,.3);
-}
-.step-icon{font-size:36px;margin-bottom:16px;display:block;}
-.step h4{
-font-size:17px;font-weight:700;
-color:var(–ink);margin-bottom:8px;
-}
-.step p{font-size:14px;color:var(–muted);line-height:1.65;}
-
-/* ─── FEATURES ─── */
-.features-section{
-background:var(–ink);
-padding:80px;
-}
-.features-grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:1px;
-background:rgba(255,255,255,.06);
-border-radius:24px;
-overflow:hidden;
-border:1px solid rgba(255,255,255,.06);
-}
-.feat{
-padding:40px 28px;
-background:rgba(255,255,255,.02);
-transition:background .25s;
-text-align:center;
-}
-.feat:hover{background:rgba(255,255,255,.05);}
-.feat-icon{
-font-size:36px;
-display:block;margin-bottom:16px;
-filter:grayscale(0);
-}
-.feat h4{
-font-size:14px;font-weight:700;
-color:#fff;margin-bottom:8px;
-letter-spacing:.01em;
-}
-.feat p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.6;}
-
-/* ─── FINAL CTA ─── */
-.final-cta{
-padding:100px 80px;
-text-align:center;
-position:relative;
-overflow:hidden;
-}
-.final-cta::before{
-content:’’;
-position:absolute;inset:0;
-background:radial-gradient(ellipse at 50% 0%,rgba(240,100,73,.1) 0%,transparent 65%);
-pointer-events:none;
-}
-.final-cta h2{
-font-size:clamp(36px,5vw,60px);
-font-weight:900;letter-spacing:-.025em;
-color:var(–ink);
-margin-bottom:16px;
-line-height:1.1;
-}
-.final-cta h2 em{color:var(–c);font-style:italic;}
-.final-cta p{
-font-size:17px;color:var(–muted);
-max-width:500px;margin:0 auto 40px;
-line-height:1.7;
-}
-.cta-group{
-display:flex;align-items:center;justify-content:center;gap:16px;
-flex-wrap:wrap;
-}
-.guarantee{
-display:flex;align-items:center;gap:6px;
-font-size:12px;font-weight:500;
-color:var(–muted);
-margin-top:24px;
-}
-.guarantee span{color:var(–c);}
-
-/* ─── FOOTER ─── */
-footer{
-background:var(–ink);
-padding:48px 80px 32px;
-}
-.footer-top{
-display:flex;align-items:flex-start;justify-content:space-between;
-margin-bottom:40px;
-gap:40px;
-}
-.footer-brand .logo{margin-bottom:14px;color:#fff;}
-.footer-brand .logo .logo-mark{background:rgba(240,100,73,.25);}
-.footer-desc{font-size:13px;color:rgba(255,255,255,.4);max-width:240px;line-height:1.7;}
-.footer-links{display:flex;gap:60px;}
-.footer-col h5{
-font-size:11px;font-weight:700;
-letter-spacing:.1em;text-transform:uppercase;
-color:rgba(255,255,255,.35);
-margin-bottom:16px;
-}
-.footer-col a{
-display:block;font-size:13px;
-color:rgba(255,255,255,.6);
-margin-bottom:10px;
-transition:color .2s;
-}
-.footer-col a:hover{color:#fff;}
-.footer-bottom{
-border-top:1px solid rgba(255,255,255,.07);
-padding-top:24px;
-display:flex;align-items:center;justify-content:space-between;
-}
-.footer-bottom p{font-size:12px;color:rgba(255,255,255,.25);}
-.payment-icons{display:flex;gap:8px;}
-.pay-chip{
-background:rgba(255,255,255,.07);
-border-radius:6px;padding:4px 10px;
-font-size:11px;font-weight:600;
-color:rgba(255,255,255,.4);
-font-family:‘DM Mono’,monospace;
-}
-
-/* ─── STICKY CTA ─── */
-.sticky-bar{
-position:fixed;bottom:0;left:0;right:0;
-background:rgba(28,21,18,.95);
-backdrop-filter:blur(20px);
-padding:14px 40px;
-display:flex;align-items:center;justify-content:space-between;
-z-index:800;
-transform:translateY(100%);
-transition:transform .4s var(–ease);
-border-top:1px solid rgba(255,255,255,.07);
-}
-.sticky-bar.visible{transform:translateY(0);}
-.sticky-info{display:flex;align-items:center;gap:16px;}
-.sticky-price{font-family:‘Playfair Display’,serif;font-size:22px;font-weight:900;color:#fff;}
-.sticky-old{font-size:13px;color:rgba(255,255,255,.35);text-decoration:line-through;font-family:‘DM Mono’,monospace;}
-.sticky-btn{
-background:var(–c);color:#fff;
-border:none;border-radius:50px;
-padding:14px 32px;font-size:14px;font-weight:700;
-display:flex;align-items:center;gap:8px;
-transition:all .25s var(–ease);
-box-shadow:0 8px 24px rgba(240,100,73,.4);
-}
-.sticky-btn:hover{background:#fff;color:var(–ink);transform:translateY(-2px);}
-
-/* ─── MOBILE ─── */
-@media(max-width:768px){
-body{cursor:auto;}
-#cursor,#cursor-ring{display:none;}
-
-nav{padding:0 20px;height:64px;}
-.nav-links,.nav-cta,.nav-ghost{display:none;}
-.hamburger{display:flex;}
-
-.hero{
-grid-template-columns:1fr;
-padding:0;
-min-height:auto;
-}
-.hero-right{
-height:340px;order:-1;
-}
-.product-plate{width:240px;height:240px;}
-.main-dumpling{font-size:90px;}
-.tag-stress,.tag-rating,.tag-sold,.tag-ship{display:none;}
-.tag-sold{display:flex;top:12px;right:12px;left:auto;padding:8px 12px;}
-.tag-sold .tag-icon{font-size:16px;}
-.tag-sold .tag-val{font-size:12px;}
-.discount-badge{width:60px;height:60px;}
-.discount-badge .d-pct{font-size:16px;}
-
-.hero-left{padding:32px 24px 40px;}
-.hero h1{font-size:34px;}
-.hero-desc{font-size:15px;}
-.hero-pills{gap:6px;}
-.pill{font-size:12px;padding:6px 12px;}
-.hero-actions{flex-direction:column;align-items:stretch;}
-.btn-primary,.btn-ghost{justify-content:center;}
-.hero-social{flex-direction:column;align-items:flex-start;gap:8px;}
-
-.trust-inner{grid-template-columns:1fr 1fr;}
-.trust-cell{padding:16px;border-bottom:1px solid rgba(255,255,255,.07);}
-.trust-cell:nth-child(2),.trust-cell:nth-child(4){border-right:none;}
-
-.offers-section{padding:60px 20px;}
-.offer-grid{grid-template-columns:1fr;max-width:400px;}
-.offer-card.featured{order:-1;}
-
-.proof-section{padding:60px 20px;}
-.proof-numbers{grid-template-columns:1fr;}
-.reviews-grid{grid-template-columns:1fr;}
-
-.how-section{padding:60px 20px;}
-.steps-grid{grid-template-columns:1fr;gap:24px;}
-.step::after{display:none!important;}
-
-.features-section{padding:60px 20px;}
-.features-grid{grid-template-columns:1fr 1fr;}
-
-.final-cta{padding:60px 20px;}
-.cta-group{flex-direction:column;}
-.btn-primary,.btn-ghost{width:100%;justify-content:center;}
-
-footer{padding:40px 24px 24px;}
-.footer-top{flex-direction:column;gap:32px;}
-.footer-links{flex-direction:column;gap:28px;}
-.footer-bottom{flex-direction:column;gap:16px;text-align:center;}
-
-.sticky-bar{padding:12px 20px;}
-.sticky-info{flex-direction:column;align-items:flex-start;gap:2px;}
-.sticky-price{font-size:18px;}
-}
-
-@media(max-width:480px){
-.hero h1{font-size:28px;}
-.hero-eyebrow{font-size:10px;}
-.features-grid{grid-template-columns:1fr;}
-.proof-numbers{grid-template-columns:1fr 1fr;}
-}
-
-/* ─── SCROLL ANIMATIONS ─── */
-.reveal{
-opacity:0;
-transform:translateY(30px);
-transition:opacity .7s var(–slow),transform .7s var(–slow);
-}
-.reveal.visible{opacity:1;transform:translateY(0);}
-.reveal-delay-1{transition-delay:.1s;}
-.reveal-delay-2{transition-delay:.2s;}
-.reveal-delay-3{transition-delay:.3s;}
-</style>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CBD Connection — Premium CBD</title>
+
+  <!-- GOOGLE FONT -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- GSAP -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+  <style>
+
+    /* ========================================================= */
+    /* RESET */
+    /* ========================================================= */
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Inter',sans-serif;
+      background:#050505;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    img{
+      width:100%;
+      display:block;
+    }
+
+    /* ========================================================= */
+    /* GLOBAL VARIABLES */
+    /* ========================================================= */
+
+    :root{
+      --bg:#050505;
+      --card:#111111;
+      --card2:#171717;
+      --border:rgba(255,255,255,0.08);
+      --green:#00ff88;
+      --text:#ffffff;
+      --muted:#999;
+      --shadow:0 20px 60px rgba(0,0,0,0.5);
+      --radius:24px;
+      --transition:0.4s ease;
+    }
+
+    /* ========================================================= */
+    /* CUSTOM CURSOR */
+    /* ========================================================= */
+
+    .cursor{
+      width:20px;
+      height:20px;
+      border:2px solid var(--green);
+      border-radius:50%;
+      position:fixed;
+      top:0;
+      left:0;
+      transform:translate(-50%,-50%);
+      pointer-events:none;
+      z-index:99999;
+      transition:transform .1s;
+    }
+
+    /* ========================================================= */
+    /* NAVBAR */
+    /* ========================================================= */
+
+    nav{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      padding:24px 60px;
+      z-index:999;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      backdrop-filter:blur(12px);
+      background:rgba(0,0,0,0.4);
+      border-bottom:1px solid rgba(255,255,255,0.05);
+    }
+
+    .logo{
+      font-size:28px;
+      font-weight:800;
+      letter-spacing:1px;
+    }
+
+    .logo span{
+      color:var(--green);
+    }
+
+    .nav-links{
+      display:flex;
+      gap:40px;
+    }
+
+    .nav-links a{
+      color:#ddd;
+      transition:var(--transition);
+      font-weight:500;
+      position:relative;
+    }
+
+    .nav-links a:hover{
+      color:white;
+    }
+
+    .nav-links a::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-8px;
+      width:0%;
+      height:2px;
+      background:var(--green);
+      transition:var(--transition);
+    }
+
+    .nav-links a:hover::after{
+      width:100%;
+    }
+
+    .nav-btn{
+      padding:14px 24px;
+      border-radius:999px;
+      background:var(--green);
+      color:black;
+      font-weight:700;
+      transition:var(--transition);
+    }
+
+    .nav-btn:hover{
+      transform:translateY(-3px);
+      box-shadow:0 10px 40px rgba(0,255,136,0.4);
+    }
+
+    /* ========================================================= */
+    /* HERO */
+    /* ========================================================= */
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+      overflow:hidden;
+      padding:0 80px;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      width:900px;
+      height:900px;
+      background:radial-gradient(circle,var(--green),transparent 70%);
+      opacity:0.08;
+      top:-200px;
+      right:-200px;
+      animation:pulse 6s infinite alternate;
+    }
+
+    @keyframes pulse{
+      from{
+        transform:scale(1);
+      }
+      to{
+        transform:scale(1.2);
+      }
+    }
+
+    .hero-content{
+      max-width:900px;
+      text-align:center;
+      position:relative;
+      z-index:2;
+    }
+
+    .hero-subtitle{
+      color:var(--green);
+      font-weight:700;
+      margin-bottom:20px;
+      letter-spacing:3px;
+      text-transform:uppercase;
+    }
+
+    .hero-title{
+      font-size:90px;
+      line-height:1;
+      font-weight:900;
+      margin-bottom:30px;
+    }
+
+    .hero-text{
+      color:#aaa;
+      font-size:20px;
+      line-height:1.8;
+      max-width:700px;
+      margin:auto;
+      margin-bottom:40px;
+    }
+
+    .hero-buttons{
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .btn-primary{
+      background:var(--green);
+      color:black;
+      padding:18px 34px;
+      border-radius:999px;
+      font-weight:800;
+      transition:var(--transition);
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-5px);
+      box-shadow:0 20px 60px rgba(0,255,136,0.4);
+    }
+
+    .btn-secondary{
+      border:1px solid rgba(255,255,255,0.1);
+      padding:18px 34px;
+      border-radius:999px;
+      transition:var(--transition);
+      color:white;
+    }
+
+    .btn-secondary:hover{
+      background:white;
+      color:black;
+    }
+
+    /* ========================================================= */
+    /* PRODUCTS */
+    /* ========================================================= */
+
+    .products{
+      padding:120px 80px;
+    }
+
+    .section-title{
+      font-size:54px;
+      font-weight:900;
+      margin-bottom:20px;
+    }
+
+    .section-text{
+      color:#999;
+      max-width:700px;
+      line-height:1.8;
+      margin-bottom:60px;
+    }
+
+    .product-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:30px;
+    }
+
+    .product-card{
+      background:linear-gradient(145deg,#111,#191919);
+      border:1px solid rgba(255,255,255,0.06);
+      border-radius:30px;
+      overflow:hidden;
+      transition:var(--transition);
+      position:relative;
+    }
+
+    .product-card:hover{
+      transform:translateY(-12px);
+      border-color:rgba(0,255,136,0.3);
+      box-shadow:0 20px 60px rgba(0,0,0,0.6);
+    }
+
+    .product-image{
+      height:360px;
+      overflow:hidden;
+    }
+
+    .product-image img{
+      height:100%;
+      object-fit:cover;
+      transition:1s ease;
+    }
+
+    .product-card:hover img{
+      transform:scale(1.08);
+    }
+
+    .product-content{
+      padding:30px;
+    }
+
+    .product-badge{
+      display:inline-block;
+      background:rgba(0,255,136,0.1);
+      color:var(--green);
+      padding:8px 14px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:700;
+      margin-bottom:20px;
+    }
+
+    .product-title{
+      font-size:28px;
+      font-weight:800;
+      margin-bottom:14px;
+    }
+
+    .product-description{
+      color:#999;
+      line-height:1.7;
+      margin-bottom:24px;
+    }
+
+    .product-bottom{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    .price{
+      font-size:26px;
+      font-weight:900;
+    }
+
+    .add-cart{
+      background:var(--green);
+      color:black;
+      padding:14px 20px;
+      border-radius:999px;
+      font-weight:800;
+      transition:var(--transition);
+    }
+
+    .add-cart:hover{
+      transform:scale(1.05);
+      box-shadow:0 10px 40px rgba(0,255,136,0.4);
+    }
+
+    /* ========================================================= */
+    /* ABOUT SECTION */
+    /* ========================================================= */
+
+    .about{
+      padding:120px 80px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:80px;
+      align-items:center;
+    }
+
+    .about-image{
+      border-radius:40px;
+      overflow:hidden;
+      position:relative;
+    }
+
+    .about-image::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top,rgba(0,0,0,0.5),transparent);
+    }
+
+    .about-content h2{
+      font-size:60px;
+      margin-bottom:30px;
+    }
+
+    .about-content p{
+      color:#999;
+      line-height:2;
+      margin-bottom:24px;
+    }
+
+    /* ========================================================= */
+    /* FOOTER */
+    /* ========================================================= */
+
+    footer{
+      padding:80px;
+      border-top:1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer-top{
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:40px;
+      margin-bottom:60px;
+    }
+
+    .footer-brand{
+      max-width:420px;
+    }
+
+    .footer-brand h3{
+      font-size:42px;
+      margin-bottom:20px;
+    }
+
+    .footer-brand p{
+      color:#999;
+      line-height:1.8;
+    }
+
+    .footer-links{
+      display:flex;
+      gap:80px;
+    }
+
+    .footer-links ul{
+      list-style:none;
+    }
+
+    .footer-links li{
+      margin-bottom:16px;
+      color:#aaa;
+      transition:var(--transition);
+      cursor:pointer;
+    }
+
+    .footer-links li:hover{
+      color:var(--green);
+    }
+
+    .footer-bottom{
+      border-top:1px solid rgba(255,255,255,0.05);
+      padding-top:30px;
+      color:#777;
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:20px;
+    }
+
+    /* ========================================================= */
+    /* RESPONSIVE */
+    /* ========================================================= */
+
+    @media(max-width:1000px){
+
+      .hero-title{
+        font-size:60px;
+      }
+
+      .about{
+        grid-template-columns:1fr;
+      }
+
+      nav{
+        padding:20px;
+      }
+
+      .products,
+      .about,
+      footer{
+        padding:80px 20px;
+      }
+
+      .hero{
+        padding:0 20px;
+      }
+
+    }
+
+    @media(max-width:700px){
+
+      .nav-links{
+        display:none;
+      }
+
+      .hero-title{
+        font-size:44px;
+      }
+
+      .section-title{
+        font-size:40px;
+      }
+
+      .about-content h2{
+        font-size:42px;
+      }
+
+    }
+
+  </style>
 </head>
+
 <body>
 
-<!-- Custom cursor -->
+  <!-- CUSTOM CURSOR -->
+  <div class="cursor"></div>
 
-<div id="cursor"></div>
-<div id="cursor-ring"></div>
+  <!-- ========================================================= -->
+  <!-- NAVBAR -->
+  <!-- ========================================================= -->
 
-<!-- ─── ANNOUNCE BAR ─── -->
+  <nav>
 
-<div class="announce">
-  <div class="announce-track">
-    <span>✦</span> Livraison offerte dès 2 Dumplings &nbsp;
-    <span>✦</span> -50% offre limitée ce soir &nbsp;
-    <span>✦</span> +1 000 clients satisfaits &nbsp;
-    <span>✦</span> Matériau sûr & sans BPA &nbsp;
-    <span>✦</span> Livraison offerte dès 2 Dumplings &nbsp;
-    <span>✦</span> -50% offre limitée ce soir &nbsp;
-    <span>✦</span> +1 000 clients satisfaits &nbsp;
-    <span>✦</span> Matériau sûr & sans BPA &nbsp;
-  </div>
-</div>
-
-<!-- ─── NAV ─── -->
-
-<nav id="nav">
-  <a href="#" class="logo">
-    <div class="logo-mark">🥟</div>
-    Dumpling<em>Zen</em>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#" class="active">Accueil</a></li>
-    <li><a href="#offres">Boutique</a></li>
-    <li><a href="#avis">Avis clients</a></li>
-    <li><a href="#">FAQ</a></li>
-    <li><a href="#">Contact</a></li>
-  </ul>
-  <div class="nav-actions">
-    <button class="nav-cart">🛒<span class="cart-dot"></span></button>
-    <button class="nav-cta">Commander maintenant</button>
-    <button class="hamburger" id="hamburger">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
-
-<!-- Mobile menu -->
-
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#">Accueil</a>
-  <a href="#offres">Boutique</a>
-  <a href="#avis">Avis clients</a>
-  <a href="#">FAQ</a>
-  <a href="#">Contact</a>
-  <button class="m-cta">Commander maintenant 🛒</button>
-</div>
-
-<!-- ─── HERO ─── -->
-
-<section class="hero">
-  <div class="hero-left">
-    <div class="hero-eyebrow">
-      <span class="dot"></span>
-      Tendance virale · Anti-stress
+    <div class="logo">
+      CBD<span>CONNECTION</span>
     </div>
-    <h1>
-      Le Squishy qui fait<br>
-      fondre
-      <em>tout le monde</em>
-    </h1>
-    <p class="hero-desc">
-      Ultra doux, satisfaisant et 100% irrésistible. Réduit le stress, 
-      l'anxiété et améliore la concentration en quelques secondes.
+
+    <div class="nav-links">
+      <a href="#">Accueil</a>
+      <a href="#">CBD Puissant</a>
+      <a href="#">Fleurs</a>
+      <a href="#">Résines</a>
+      <a href="#">Contact</a>
+    </div>
+
+    <a href="#" class="nav-btn">
+      Boutique
+    </a>
+
+  </nav>
+
+  <!-- ========================================================= -->
+  <!-- HERO -->
+  <!-- ========================================================= -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <div class="hero-subtitle">
+        CBD PREMIUM EXPERIENCE
+      </div>
+
+      <h1 class="hero-title">
+        Ultra Premium <br>
+        CBD Connection
+      </h1>
+
+      <p class="hero-text">
+        Découvrez une nouvelle génération de CBD premium avec une expérience immersive, moderne et haut de gamme inspirée des plus grandes marques lifestyle américaines.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#" class="btn-primary">
+          Découvrir les produits
+        </a>
+
+        <a href="#" class="btn-secondary">
+          Voir la collection
+        </a>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- PRODUCTS -->
+  <!-- ========================================================= -->
+
+  <section class="products">
+
+    <h2 class="section-title">
+      CBD Puissant
+    </h2>
+
+    <p class="section-text">
+      Une sélection premium ultra qualitative avec une identité visuelle moderne, immersive et pensée pour maximiser les conversions.
     </p>
-    <div class="hero-pills">
-      <span class="pill">🧠 Effet relaxant immédiat</span>
-      <span class="pill">❤️ Adorable & kawaii</span>
-      <span class="pill">🌿 Sans BPA</span>
-      <span class="pill">😊 Adultes & enfants</span>
-    </div>
-    <div class="hero-actions">
-      <button class="btn-primary">Je veux le mien <span class="arrow">→</span></button>
-      <button class="btn-ghost">Voir les offres ↓</button>
-    </div>
-    <div class="hero-social">
-      <div class="avatar-stack">
-        <div class="avatar">S</div>
-        <div class="avatar">T</div>
-        <div class="avatar">C</div>
-        <div class="avatar">M</div>
-        <div class="avatar">+</div>
-      </div>
-      <div>
-        <div class="star-row">
-          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+
+    <div class="product-grid">
+
+      <!-- CARD -->
+
+      <div class="product-card reveal">
+
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1603909223429-69bb7101f420?q=80&w=1200&auto=format&fit=crop" alt="">
         </div>
-        <p><strong>+1 000</strong> clients satisfaits</p>
-      </div>
-    </div>
-  </div>
 
-  <div class="hero-right">
-    <div class="hero-blob hero-blob-1"></div>
-    <div class="hero-blob hero-blob-2"></div>
-    <div class="sparkle-el s1"></div>
-    <div class="sparkle-el s2"></div>
-    <div class="sparkle-el s3"></div>
+        <div class="product-content">
 
-```
-<div class="product-visual">
-  <div class="product-plate">
-    <div class="main-dumpling">🥟</div>
-  </div>
-  <div class="discount-badge">
-    <span class="d-pct">-50%</span>
-    <span class="d-txt">Limité</span>
-  </div>
+          <div class="product-badge">
+            ULTRA PREMIUM
+          </div>
 
-  <!-- Floating tags -->
-  <div class="float-tag tag-stress">
-    <span class="tag-icon">😌</span>
-    <div>
-      <span class="tag-label">Stress réduit</span>
-      <span class="tag-val">Instantané</span>
-    </div>
-  </div>
-  <div class="float-tag tag-rating">
-    <span class="tag-icon">⭐</span>
-    <div>
-      <span class="tag-label">Note clients</span>
-      <span class="tag-val">4.9 / 5</span>
-    </div>
-  </div>
-  <div class="float-tag tag-sold">
-    <span class="tag-icon">🔥</span>
-    <div>
-      <span class="tag-label">Vendus aujourd'hui</span>
-      <span class="tag-val">247 unités</span>
-    </div>
-  </div>
-  <div class="float-tag tag-ship">
-    <span class="tag-icon">📦</span>
-    <div>
-      <span class="tag-label">Livraison</span>
-      <span class="tag-val">Sous 24h</span>
-    </div>
-  </div>
-</div>
-```
+          <h3 class="product-title">
+            Diablo US
+          </h3>
 
-  </div>
-</section>
+          <p class="product-description">
+            Fleur CBD puissante avec un profil aromatique premium et une finition haut de gamme.
+          </p>
 
-<!-- ─── TRUST STRIP ─── -->
+          <div class="product-bottom">
 
-<div class="trust-strip">
-  <div class="trust-inner">
-    <div class="trust-cell">
-      <div class="trust-cell-icon">🚀</div>
-      <div>
-        <strong>Livraison Express</strong>
-        <span>Expédition sous 24h depuis la France</span>
-      </div>
-    </div>
-    <div class="trust-cell">
-      <div class="trust-cell-icon">🔐</div>
-      <div>
-        <strong>Paiement 100% Sécurisé</strong>
-        <span>Cryptage SSL · CB, PayPal, Apple Pay</span>
-      </div>
-    </div>
-    <div class="trust-cell">
-      <div class="trust-cell-icon">↩️</div>
-      <div>
-        <strong>Satisfait ou Remboursé</strong>
-        <span>30 jours pour changer d'avis</span>
-      </div>
-    </div>
-    <div class="trust-cell">
-      <div class="trust-cell-icon">💬</div>
-      <div>
-        <strong>Support 7j/7</strong>
-        <span>Réponse garantie en moins de 2h</span>
-      </div>
-    </div>
-  </div>
-</div>
+            <div class="price">
+              24€
+            </div>
 
-<!-- ─── OFFERS ─── -->
+            <a href="#" class="add-cart">
+              Ajouter
+            </a>
 
-<section class="offers-section reveal" id="offres">
-  <div class="section-header">
-    <div class="section-label">Nos offres</div>
-    <h2>Choisissez votre formule</h2>
-    <p>Plus vous en prenez, plus vous économisez — et plus vous souriez.</p>
-  </div>
-  <div class="offer-grid">
+          </div>
 
-```
-<!-- 1 -->
-<div class="offer-card reveal reveal-delay-1">
-  <span class="offer-emoji">🥟</span>
-  <div class="offer-name">Solo</div>
-  <div class="offer-qty">1 Dumpling</div>
-  <div class="offer-price-block">
-    <div class="offer-price">9,99€</div>
-    <div class="offer-old">19,99€</div>
-    <span class="offer-save">Économisez 50%</span>
-  </div>
-  <ul class="offer-perks">
-    <li><span class="perk-check">✓</span>1 Dumpling kawaii</li>
-    <li><span class="perk-check">✓</span>Livraison standard</li>
-    <li><span class="perk-check">✓</span>Emballage cadeau</li>
-  </ul>
-  <button class="btn-offer btn-offer-dark">Commander →</button>
-</div>
-
-<!-- 2 featured -->
-<div class="offer-card featured reveal reveal-delay-2">
-  <div class="pop-badge">🔥 Le plus populaire</div>
-  <span class="offer-emoji">🥟🥟</span>
-  <div class="offer-name" style="color:#fff">Duo</div>
-  <div class="offer-qty">2 Dumplings</div>
-  <div class="offer-price-block">
-    <div class="offer-price">17,99€</div>
-    <div class="offer-old">39,98€</div>
-    <span class="offer-save">Économisez 55%</span>
-  </div>
-  <ul class="offer-perks">
-    <li><span class="perk-check">✓</span>2 Dumplings kawaii</li>
-    <li><span class="perk-check">✓</span>Livraison prioritaire</li>
-    <li><span class="perk-check">✓</span>Emballage premium</li>
-    <li><span class="perk-check">✓</span>Carte cadeau offerte</li>
-  </ul>
-  <button class="btn-offer btn-offer-light">Commander →</button>
-</div>
-
-<!-- 3 -->
-<div class="offer-card reveal reveal-delay-3">
-  <span class="offer-emoji">🥟🥟🥟</span>
-  <div class="offer-name">Trio</div>
-  <div class="offer-qty">3 Dumplings</div>
-  <div class="offer-price-block">
-    <div class="offer-price">24,99€</div>
-    <div class="offer-old">59,97€</div>
-    <span class="offer-save">Économisez 58%</span>
-  </div>
-  <ul class="offer-perks">
-    <li><span class="perk-check">✓</span>3 Dumplings kawaii</li>
-    <li><span class="perk-check">✓</span>Livraison offerte</li>
-    <li><span class="perk-check">✓</span>Boîte collector</li>
-    <li><span class="perk-check">✓</span>Accès VIP fidélité</li>
-  </ul>
-  <button class="btn-offer btn-offer-dark">Commander →</button>
-</div>
-```
-
-  </div>
-</section>
-
-<!-- ─── SOCIAL PROOF ─── -->
-
-<section class="proof-section" id="avis">
-  <div class="proof-numbers reveal">
-    <div class="proof-num">
-      <span class="num" data-target="1247">0</span>
-      <p>Clients satisfaits ce mois-ci</p>
-    </div>
-    <div class="proof-num">
-      <span class="num" data-target="49" data-decimal>0</span>
-      <p>Note moyenne sur 5 étoiles</p>
-    </div>
-    <div class="proof-num">
-      <span class="num" data-target="98">0</span>
-      <p>% de clients qui recommandent</p>
-    </div>
-  </div>
-
-  <div class="reviews-label reveal">
-    <h3>Ils adorent déjà !</h3>
-    <p>Des vraies personnes, des vraies réactions.</p>
-  </div>
-  <div class="reviews-grid">
-    <div class="review-card reveal reveal-delay-1">
-      <div class="rev-top">
-        <div class="rev-avatar" style="background:linear-gradient(135deg,#F9A58C,#F06449)">S</div>
-        <div class="rev-meta">
-          <strong>Sophie L.</strong>
-          <span class="rev-date">Il y a 3 jours · Paris</span>
         </div>
+
       </div>
-      <div class="rev-stars">★★★★★</div>
-      <p class="rev-body">"Tellement mignon et satisfaisant ! Je ne peux plus m'en passer. Je l'ai commandé pour ma fille et finalement je le garde pour moi."</p>
-      <div class="rev-verified">✓ Achat vérifié</div>
-    </div>
-    <div class="review-card reveal reveal-delay-2">
-      <div class="rev-top">
-        <div class="rev-avatar" style="background:linear-gradient(135deg,#8A9FC8,#5B7EC4)">T</div>
-        <div class="rev-meta">
-          <strong>Thomas B.</strong>
-          <span class="rev-date">Il y a 1 semaine · Lyon</span>
+
+      <!-- CARD -->
+
+      <div class="product-card reveal">
+
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1583947581924-a6d01f7d7a1b?q=80&w=1200&auto=format&fit=crop" alt="">
         </div>
-      </div>
-      <div class="rev-stars">★★★★★</div>
-      <p class="rev-body">"Parfait pour déstresser au travail. Livraison rapide et produit top ! Je l'ai sur mon bureau toute la journée. Mes collègues en veulent tous."</p>
-      <div class="rev-verified">✓ Achat vérifié</div>
-    </div>
-    <div class="review-card reveal reveal-delay-3">
-      <div class="rev-top">
-        <div class="rev-avatar" style="background:linear-gradient(135deg,#C8A8B8,#A87890)">C</div>
-        <div class="rev-meta">
-          <strong>Camille D.</strong>
-          <span class="rev-date">Il y a 5 jours · Bordeaux</span>
+
+        <div class="product-content">
+
+          <div class="product-badge">
+            BEST SELLER
+          </div>
+
+          <h3 class="product-title">
+            Cali Green
+          </h3>
+
+          <p class="product-description">
+            Expérience premium inspirée de la culture cannabis californienne.
+          </p>
+
+          <div class="product-bottom">
+
+            <div class="price">
+              29€
+            </div>
+
+            <a href="#" class="add-cart">
+              Ajouter
+            </a>
+
+          </div>
+
         </div>
+
       </div>
-      <div class="rev-stars">★★★★★</div>
-      <p class="rev-body">"Mon fils adore, et moi aussi 😍 La qualité est incroyable, beaucoup mieux que ce à quoi je m'attendais. On en a commandé un deuxième!"</p>
-      <div class="rev-verified">✓ Achat vérifié</div>
-    </div>
-  </div>
-</section>
 
-<!-- ─── HOW IT WORKS ─── -->
+      <!-- CARD -->
 
-<section class="how-section">
-  <div class="section-header reveal">
-    <div class="section-label">Comment ça marche</div>
-    <h2>Simple comme bonjour</h2>
-    <p>Trois étapes pour retrouver votre sérénité.</p>
-  </div>
-  <div class="steps-grid">
-    <div class="step reveal reveal-delay-1">
-      <span class="step-icon">🛒</span>
-      <div class="step-num">1</div>
-      <h4>Choisissez votre offre</h4>
-      <p>Sélectionnez la quantité qui vous convient parmi nos 3 formules exclusives.</p>
-    </div>
-    <div class="step reveal reveal-delay-2">
-      <span class="step-icon">📦</span>
-      <div class="step-num">2</div>
-      <h4>Livraison en 24h</h4>
-      <p>Votre colis est expédié depuis la France le jour même, soigneusement emballé.</p>
-    </div>
-    <div class="step reveal reveal-delay-3">
-      <span class="step-icon">😌</span>
-      <div class="step-num">3</div>
-      <h4>Profitez & déstressez</h4>
-      <p>Serrez, pressez, malaxez. Sentez le stress fondre entre vos doigts.</p>
-    </div>
-  </div>
-</section>
+      <div class="product-card reveal">
 
-<!-- ─── FEATURES ─── -->
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?q=80&w=1200&auto=format&fit=crop" alt="">
+        </div>
 
-<div class="features-section">
-  <div class="features-grid">
-    <div class="feat reveal">
-      <span class="feat-icon">🧠</span>
-      <h4>Soulage le stress</h4>
-      <p>Réduit l'anxiété et les tensions nerveuses instantanément</p>
+        <div class="product-content">
+
+          <div class="product-badge">
+            EXCLUSIVE
+          </div>
+
+          <h3 class="product-title">
+            Purple Storm
+          </h3>
+
+          <p class="product-description">
+            Une expérience sensorielle premium avec un branding ultra moderne.
+          </p>
+
+          <div class="product-bottom">
+
+            <div class="price">
+              34€
+            </div>
+
+            <a href="#" class="add-cart">
+              Ajouter
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
     </div>
-    <div class="feat reveal reveal-delay-1">
-      <span class="feat-icon">💡</span>
-      <h4>Boost la concentration</h4>
-      <p>Améliore la créativité et la productivité au bureau</p>
+
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- ABOUT -->
+  <!-- ========================================================= -->
+
+  <section class="about">
+
+    <div class="about-image reveal">
+      <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200&auto=format&fit=crop" alt="">
     </div>
-    <div class="feat reveal reveal-delay-2">
-      <span class="feat-icon">🏠</span>
-      <h4>Partout avec vous</h4>
-      <p>Maison, bureau, école — compact et discret</p>
-    </div>
-    <div class="feat reveal reveal-delay-3">
-      <span class="feat-icon">🎁</span>
-      <h4>Cadeau parfait</h4>
-      <p>Original et inoubliable pour tous les âges</p>
-    </div>
-  </div>
-</div>
 
-<!-- ─── FINAL CTA ─── -->
+    <div class="about-content reveal">
 
-<section class="final-cta">
-  <h2 class="reveal">Prêt à <em>craquer</em> ?</h2>
-  <p class="reveal reveal-delay-1">Rejoignez plus de 1 000 personnes qui ont déjà adopté leur Dumpling anti-stress. L'offre -50% se termine bientôt.</p>
-  <div class="cta-group reveal reveal-delay-2">
-    <button class="btn-primary" style="font-size:16px;padding:20px 44px;">Je commande maintenant <span class="arrow">→</span></button>
-  </div>
-  <div class="guarantee reveal reveal-delay-3">
-    <span>✓</span> Satisfait ou remboursé 30 jours &nbsp;·&nbsp; <span>✓</span> Paiement sécurisé &nbsp;·&nbsp; <span>✓</span> Sans engagement
-  </div>
-</section>
+      <h2>
+        Une marque CBD nouvelle génération
+      </h2>
 
-<!-- ─── FOOTER ─── -->
+      <p>
+        CBD Connection devient une expérience premium immersive pensée pour créer une identité forte, moderne et mémorable.
+      </p>
 
-<footer>
-  <div class="footer-top">
-    <div class="footer-brand">
-      <a href="#" class="logo" style="color:#fff;margin-bottom:12px;display:inline-flex;">
-        <div class="logo-mark">🥟</div>
-        Dumpling<span style="color:var(--c)">Zen</span>
+      <p>
+        Le nouveau branding combine esthétique luxury, animations fluides, design moderne et optimisation conversion pour transformer votre boutique en véritable marque lifestyle.
+      </p>
+
+      <a href="#" class="btn-primary">
+        Explorer maintenant
       </a>
-      <p class="footer-desc">Le squishy anti-stress kawaii qui fait fondre tout le monde.</p>
+
     </div>
-    <div class="footer-links">
-      <div class="footer-col">
-        <h5>Boutique</h5>
-        <a href="#">Nos produits</a>
-        <a href="#">Offres spéciales</a>
-        <a href="#">Cadeaux</a>
+
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- FOOTER -->
+  <!-- ========================================================= -->
+
+  <footer>
+
+    <div class="footer-top">
+
+      <div class="footer-brand">
+
+        <h3>
+          CBD CONNECTION
+        </h3>
+
+        <p>
+          Premium CBD experience — Dark luxury branding, immersive experience et identité visuelle moderne.
+        </p>
+
       </div>
-      <div class="footer-col">
-        <h5>Aide</h5>
-        <a href="#">FAQ</a>
-        <a href="#">Livraison</a>
-        <a href="#">Retours</a>
-        <a href="#">Contact</a>
+
+      <div class="footer-links">
+
+        <ul>
+          <li>Accueil</li>
+          <li>Boutique</li>
+          <li>Produits</li>
+          <li>Contact</li>
+        </ul>
+
+        <ul>
+          <li>Instagram</li>
+          <li>TikTok</li>
+          <li>Discord</li>
+          <li>Twitter</li>
+        </ul>
+
       </div>
-      <div class="footer-col">
-        <h5>Légal</h5>
-        <a href="#">CGV</a>
-        <a href="#">Confidentialité</a>
-        <a href="#">Mentions légales</a>
+
+    </div>
+
+    <div class="footer-bottom">
+
+      <div>
+        © 2026 CBD Connection — Tous droits réservés
       </div>
+
+      <div>
+        Premium UI Experience
+      </div>
+
     </div>
-  </div>
-  <div class="footer-bottom">
-    <p>© 2025 DumplingZen. Tous droits réservés.</p>
-    <div class="payment-icons">
-      <span class="pay-chip">CB</span>
-      <span class="pay-chip">Visa</span>
-      <span class="pay-chip">PayPal</span>
-      <span class="pay-chip">Apple Pay</span>
-    </div>
-  </div>
-</footer>
 
-<!-- ─── STICKY BAR ─── -->
+  </footer>
 
-<div class="sticky-bar" id="stickyBar">
-  <div class="sticky-info">
-    <div>
-      <span style="font-size:12px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.06em;font-weight:600;">Offre limitée 🔥</span>
-    </div>
-    <div style="display:flex;align-items:center;gap:12px;">
-      <span class="sticky-price">17,99€</span>
-      <span class="sticky-old">39,98€</span>
-      <span style="background:var(--c);color:#fff;font-size:11px;font-weight:700;padding:3px 10px;border-radius:50px;">-55%</span>
-    </div>
-  </div>
-  <button class="sticky-btn">Commander maintenant →</button>
-</div>
+  <!-- ========================================================= -->
+  <!-- JAVASCRIPT -->
+  <!-- ========================================================= -->
 
-<script>
-/* ─── CURSOR ─── */
-const cursor = document.getElementById('cursor');
-const ring = document.getElementById('cursor-ring');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{
-  mx=e.clientX;my=e.clientY;
-  cursor.style.left=mx+'px';cursor.style.top=my+'px';
-});
-(function loop(){
-  rx+=(mx-rx)*.12;ry+=(my-ry)*.12;
-  ring.style.left=rx+'px';ring.style.top=ry+'px';
-  requestAnimationFrame(loop);
-})();
+  <script>
 
-/* ─── NAV SCROLL ─── */
-const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>{
-  nav.classList.toggle('scrolled',window.scrollY>50);
-});
+    /* ========================================================= */
+    /* CUSTOM CURSOR */
+    /* ========================================================= */
 
-/* ─── HAMBURGER ─── */
-const ham=document.getElementById('hamburger');
-const mob=document.getElementById('mobileMenu');
-ham.addEventListener('click',()=>{
-  ham.classList.toggle('open');
-  mob.classList.toggle('open');
-  document.body.style.overflow=mob.classList.contains('open')?'hidden':'';
-});
-mob.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
-  ham.classList.remove('open');mob.classList.remove('open');
-  document.body.style.overflow='';
-}));
+    const cursor = document.querySelector('.cursor');
 
-/* ─── STICKY BAR ─── */
-const sticky=document.getElementById('stickyBar');
-window.addEventListener('scroll',()=>{
-  sticky.classList.toggle('visible',window.scrollY>window.innerHeight*.6);
-});
+    document.addEventListener('mousemove',(e)=>{
 
-/* ─── REVEAL ON SCROLL ─── */
-const reveals=document.querySelectorAll('.reveal');
-const io=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});
-},{threshold:.12});
-reveals.forEach(el=>io.observe(el));
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
 
-/* ─── COUNT UP ─── */
-function countUp(el,target,decimal){
-  let start=0,dur=2000,step=16;
-  const inc=target/(dur/step);
-  const timer=setInterval(()=>{
-    start+=inc;
-    if(start>=target){start=target;clearInterval(timer);}
-    el.textContent=decimal?(start/10).toFixed(1):Math.floor(start).toLocaleString('fr');
-  },step);
-}
-const numObserver=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      const el=e.target;
-      const t=parseInt(el.dataset.target);
-      countUp(el,t,el.dataset.decimal!==undefined);
-      numObserver.unobserve(el);
-    }
-  });
-},{threshold:.5});
-document.querySelectorAll('.num').forEach(el=>numObserver.observe(el));
-</script>
+    });
+
+    /* ========================================================= */
+    /* GSAP ANIMATIONS */
+    /* ========================================================= */
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.from('.hero-subtitle',{
+      opacity:0,
+      y:30,
+      duration:1,
+    });
+
+    gsap.from('.hero-title',{
+      opacity:0,
+      y:80,
+      duration:1.4,
+      delay:.2,
+    });
+
+    gsap.from('.hero-text',{
+      opacity:0,
+      y:40,
+      duration:1,
+      delay:.5,
+    });
+
+    gsap.from('.hero-buttons',{
+      opacity:0,
+      y:40,
+      duration:1,
+      delay:.8,
+    });
+
+    gsap.utils.toArray('.reveal').forEach((element)=>{
+
+      gsap.from(element,{
+        opacity:0,
+        y:100,
+        duration:1.2,
+        ease:'power4.out',
+        scrollTrigger:{
+          trigger:element,
+          start:'top 85%',
+        }
+      });
+
+    });
+
+    /* ========================================================= */
+    /* NAVBAR BACKGROUND ON SCROLL */
+    /* ========================================================= */
+
+    window.addEventListener('scroll',()=>{
+
+      const nav = document.querySelector('nav');
+
+      if(window.scrollY > 50){
+
+        nav.style.background = 'rgba(0,0,0,0.85)';
+        nav.style.backdropFilter = 'blur(18px)';
+
+      }else{
+
+        nav.style.background = 'rgba(0,0,0,0.4)';
+
+      }
+
+    });
+
+    /* ========================================================= */
+    /* MAGNETIC BUTTON EFFECT */
+    /* ========================================================= */
+
+    const buttons = document.querySelectorAll('.btn-primary');
+
+    buttons.forEach(button=>{
+
+      button.addEventListener('mousemove',(e)=>{
+
+        const rect = button.getBoundingClientRect();
+
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+
+        button.style.transform =
+          `translate(${x * 0.15}px, ${y * 0.15}px)`;
+
+      });
+
+      button.addEventListener('mouseleave',()=>{
+
+        button.style.transform = 'translate(0px,0px)';
+
+      });
+
+    });
+
+  </script>
 
 </body>
 </html>
