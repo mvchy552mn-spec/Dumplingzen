@@ -1,925 +1,2229 @@
-<!-- ========================================================= -->
-<!-- CBD CONNECTION — FULL PREMIUM REBRANDING FRONT SECTION -->
-<!-- VERSION : DARK LUXURY / CALI PREMIUM / ULTRA MODERN -->
-<!-- ========================================================= -->
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CBD Connection — Premium CBD</title>
-
-  <!-- GOOGLE FONT -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-  <!-- GSAP -->
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-
-  <style>
-
-    /* ========================================================= */
-    /* RESET */
-    /* ========================================================= */
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
-
-    html{
-      scroll-behavior:smooth;
-    }
-
-    body{
-      font-family:'Inter',sans-serif;
-      background:#050505;
-      color:white;
-      overflow-x:hidden;
-    }
-
-    a{
-      text-decoration:none;
-      color:inherit;
-    }
-
-    img{
-      width:100%;
-      display:block;
-    }
-
-    /* ========================================================= */
-    /* GLOBAL VARIABLES */
-    /* ========================================================= */
-
-    :root{
-      --bg:#050505;
-      --card:#111111;
-      --card2:#171717;
-      --border:rgba(255,255,255,0.08);
-      --green:#00ff88;
-      --text:#ffffff;
-      --muted:#999;
-      --shadow:0 20px 60px rgba(0,0,0,0.5);
-      --radius:24px;
-      --transition:0.4s ease;
-    }
-
-    /* ========================================================= */
-    /* CUSTOM CURSOR */
-    /* ========================================================= */
-
-    .cursor{
-      width:20px;
-      height:20px;
-      border:2px solid var(--green);
-      border-radius:50%;
-      position:fixed;
-      top:0;
-      left:0;
-      transform:translate(-50%,-50%);
-      pointer-events:none;
-      z-index:99999;
-      transition:transform .1s;
-    }
-
-    /* ========================================================= */
-    /* NAVBAR */
-    /* ========================================================= */
-
-    nav{
-      position:fixed;
-      top:0;
-      left:0;
-      width:100%;
-      padding:24px 60px;
-      z-index:999;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      backdrop-filter:blur(12px);
-      background:rgba(0,0,0,0.4);
-      border-bottom:1px solid rgba(255,255,255,0.05);
-    }
-
-    .logo{
-      font-size:28px;
-      font-weight:800;
-      letter-spacing:1px;
-    }
-
-    .logo span{
-      color:var(--green);
-    }
-
-    .nav-links{
-      display:flex;
-      gap:40px;
-    }
-
-    .nav-links a{
-      color:#ddd;
-      transition:var(--transition);
-      font-weight:500;
-      position:relative;
-    }
-
-    .nav-links a:hover{
-      color:white;
-    }
-
-    .nav-links a::after{
-      content:"";
-      position:absolute;
-      left:0;
-      bottom:-8px;
-      width:0%;
-      height:2px;
-      background:var(--green);
-      transition:var(--transition);
-    }
-
-    .nav-links a:hover::after{
-      width:100%;
-    }
-
-    .nav-btn{
-      padding:14px 24px;
-      border-radius:999px;
-      background:var(--green);
-      color:black;
-      font-weight:700;
-      transition:var(--transition);
-    }
-
-    .nav-btn:hover{
-      transform:translateY(-3px);
-      box-shadow:0 10px 40px rgba(0,255,136,0.4);
-    }
-
-    /* ========================================================= */
-    /* HERO */
-    /* ========================================================= */
-
-    .hero{
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      position:relative;
-      overflow:hidden;
-      padding:0 80px;
-    }
-
-    .hero::before{
-      content:"";
-      position:absolute;
-      width:900px;
-      height:900px;
-      background:radial-gradient(circle,var(--green),transparent 70%);
-      opacity:0.08;
-      top:-200px;
-      right:-200px;
-      animation:pulse 6s infinite alternate;
-    }
-
-    @keyframes pulse{
-      from{
-        transform:scale(1);
-      }
-      to{
-        transform:scale(1.2);
-      }
-    }
-
-    .hero-content{
-      max-width:900px;
-      text-align:center;
-      position:relative;
-      z-index:2;
-    }
-
-    .hero-subtitle{
-      color:var(--green);
-      font-weight:700;
-      margin-bottom:20px;
-      letter-spacing:3px;
-      text-transform:uppercase;
-    }
-
-    .hero-title{
-      font-size:90px;
-      line-height:1;
-      font-weight:900;
-      margin-bottom:30px;
-    }
-
-    .hero-text{
-      color:#aaa;
-      font-size:20px;
-      line-height:1.8;
-      max-width:700px;
-      margin:auto;
-      margin-bottom:40px;
-    }
-
-    .hero-buttons{
-      display:flex;
-      justify-content:center;
-      gap:20px;
-      flex-wrap:wrap;
-    }
-
-    .btn-primary{
-      background:var(--green);
-      color:black;
-      padding:18px 34px;
-      border-radius:999px;
-      font-weight:800;
-      transition:var(--transition);
-    }
-
-    .btn-primary:hover{
-      transform:translateY(-5px);
-      box-shadow:0 20px 60px rgba(0,255,136,0.4);
-    }
-
-    .btn-secondary{
-      border:1px solid rgba(255,255,255,0.1);
-      padding:18px 34px;
-      border-radius:999px;
-      transition:var(--transition);
-      color:white;
-    }
-
-    .btn-secondary:hover{
-      background:white;
-      color:black;
-    }
-
-    /* ========================================================= */
-    /* PRODUCTS */
-    /* ========================================================= */
-
-    .products{
-      padding:120px 80px;
-    }
-
-    .section-title{
-      font-size:54px;
-      font-weight:900;
-      margin-bottom:20px;
-    }
-
-    .section-text{
-      color:#999;
-      max-width:700px;
-      line-height:1.8;
-      margin-bottom:60px;
-    }
-
-    .product-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-      gap:30px;
-    }
-
-    .product-card{
-      background:linear-gradient(145deg,#111,#191919);
-      border:1px solid rgba(255,255,255,0.06);
-      border-radius:30px;
-      overflow:hidden;
-      transition:var(--transition);
-      position:relative;
-    }
-
-    .product-card:hover{
-      transform:translateY(-12px);
-      border-color:rgba(0,255,136,0.3);
-      box-shadow:0 20px 60px rgba(0,0,0,0.6);
-    }
-
-    .product-image{
-      height:360px;
-      overflow:hidden;
-    }
-
-    .product-image img{
-      height:100%;
-      object-fit:cover;
-      transition:1s ease;
-    }
-
-    .product-card:hover img{
-      transform:scale(1.08);
-    }
-
-    .product-content{
-      padding:30px;
-    }
-
-    .product-badge{
-      display:inline-block;
-      background:rgba(0,255,136,0.1);
-      color:var(--green);
-      padding:8px 14px;
-      border-radius:999px;
-      font-size:12px;
-      font-weight:700;
-      margin-bottom:20px;
-    }
-
-    .product-title{
-      font-size:28px;
-      font-weight:800;
-      margin-bottom:14px;
-    }
-
-    .product-description{
-      color:#999;
-      line-height:1.7;
-      margin-bottom:24px;
-    }
-
-    .product-bottom{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-    }
-
-    .price{
-      font-size:26px;
-      font-weight:900;
-    }
-
-    .add-cart{
-      background:var(--green);
-      color:black;
-      padding:14px 20px;
-      border-radius:999px;
-      font-weight:800;
-      transition:var(--transition);
-    }
-
-    .add-cart:hover{
-      transform:scale(1.05);
-      box-shadow:0 10px 40px rgba(0,255,136,0.4);
-    }
-
-    /* ========================================================= */
-    /* ABOUT SECTION */
-    /* ========================================================= */
-
-    .about{
-      padding:120px 80px;
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:80px;
-      align-items:center;
-    }
-
-    .about-image{
-      border-radius:40px;
-      overflow:hidden;
-      position:relative;
-    }
-
-    .about-image::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(to top,rgba(0,0,0,0.5),transparent);
-    }
-
-    .about-content h2{
-      font-size:60px;
-      margin-bottom:30px;
-    }
-
-    .about-content p{
-      color:#999;
-      line-height:2;
-      margin-bottom:24px;
-    }
-
-    /* ========================================================= */
-    /* FOOTER */
-    /* ========================================================= */
-
-    footer{
-      padding:80px;
-      border-top:1px solid rgba(255,255,255,0.06);
-    }
-
-    .footer-top{
-      display:flex;
-      justify-content:space-between;
-      flex-wrap:wrap;
-      gap:40px;
-      margin-bottom:60px;
-    }
-
-    .footer-brand{
-      max-width:420px;
-    }
-
-    .footer-brand h3{
-      font-size:42px;
-      margin-bottom:20px;
-    }
-
-    .footer-brand p{
-      color:#999;
-      line-height:1.8;
-    }
-
-    .footer-links{
-      display:flex;
-      gap:80px;
-    }
-
-    .footer-links ul{
-      list-style:none;
-    }
-
-    .footer-links li{
-      margin-bottom:16px;
-      color:#aaa;
-      transition:var(--transition);
-      cursor:pointer;
-    }
-
-    .footer-links li:hover{
-      color:var(--green);
-    }
-
-    .footer-bottom{
-      border-top:1px solid rgba(255,255,255,0.05);
-      padding-top:30px;
-      color:#777;
-      display:flex;
-      justify-content:space-between;
-      flex-wrap:wrap;
-      gap:20px;
-    }
-
-    /* ========================================================= */
-    /* RESPONSIVE */
-    /* ========================================================= */
-
-    @media(max-width:1000px){
-
-      .hero-title{
-        font-size:60px;
-      }
-
-      .about{
-        grid-template-columns:1fr;
-      }
-
-      nav{
-        padding:20px;
-      }
-
-      .products,
-      .about,
-      footer{
-        padding:80px 20px;
-      }
-
-      .hero{
-        padding:0 20px;
-      }
-
-    }
-
-    @media(max-width:700px){
-
-      .nav-links{
-        display:none;
-      }
-
-      .hero-title{
-        font-size:44px;
-      }
-
-      .section-title{
-        font-size:40px;
-      }
-
-      .about-content h2{
-        font-size:42px;
-      }
-
-    }
-
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Maison Gourmande – Traiteur Événementiel Premium Grenoble</title>
+<meta name="description" content="Prestations gourmandes haut de gamme pour vos événements à Grenoble. Buffets élégants, brunchs premium, animations sucrées & salées. Mariages, entreprises, réceptions privées.">
+<meta name="keywords" content="traiteur événementiel Grenoble, buffet Grenoble, brunch événement Grenoble, plateaux gourmands Grenoble, mariage Grenoble buffet, prestations gourmandes Grenoble">
+
+<!-- Schema SEO Local -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CateringService",
+  "name": "La Maison Gourmande",
+  "description": "Traiteur événementiel premium Grenoble – buffets haut de gamme, brunchs, plateaux gourmands",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Grenoble",
+    "addressCountry": "FR"
+  },
+  "areaServed": "Grenoble et alentours",
+  "priceRange": "€€€"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --noir: #111111;
+    --charbon: #1C1C1C;
+    --beige: #F2E7D8;
+    --blanc: #FAF8F4;
+    --or: #C8A46B;
+    --champagne: #D8C2A0;
+    --or-light: #E8D4B0;
+    --radius: 2px;
+    --transition: 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--blanc);
+    color: var(--charbon);
+    overflow-x: hidden;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* Cursor */
+  body { cursor: none; }
+  .cursor {
+    width: 8px; height: 8px;
+    background: var(--or);
+    border-radius: 50%;
+    position: fixed; top: 0; left: 0;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.15s ease;
+  }
+  .cursor-ring {
+    width: 36px; height: 36px;
+    border: 1px solid var(--or);
+    border-radius: 50%;
+    position: fixed; top: 0; left: 0;
+    pointer-events: none;
+    z-index: 9998;
+    transition: transform 0.35s ease, width 0.3s, height 0.3s, opacity 0.3s;
+    opacity: 0.6;
+  }
+  a, button { cursor: none; }
+
+  /* ===== HEADER ===== */
+  header {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 1000;
+    padding: 0 60px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 80px;
+    background: transparent;
+    transition: background 0.5s ease, box-shadow 0.5s;
+  }
+  header.scrolled {
+    background: rgba(17,17,17,0.97);
+    box-shadow: 0 1px 0 rgba(200,164,107,0.15);
+  }
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    color: var(--blanc);
+    text-decoration: none;
+    display: flex; flex-direction: column; line-height: 1.1;
+  }
+  .logo span {
+    font-size: 0.55rem;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.35em;
+    font-weight: 300;
+    color: var(--champagne);
+    text-transform: uppercase;
+  }
+  nav { display: flex; gap: 36px; align-items: center; }
+  nav a {
+    color: rgba(250,248,244,0.8);
+    text-decoration: none;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 400;
+    transition: color 0.3s;
+    position: relative;
+  }
+  nav a::after {
+    content: '';
+    position: absolute; bottom: -4px; left: 0; right: 0;
+    height: 1px; background: var(--or);
+    transform: scaleX(0);
+    transition: transform 0.4s;
+  }
+  nav a:hover { color: var(--or); }
+  nav a:hover::after { transform: scaleX(1); }
+
+  .btn-devis {
+    background: transparent;
+    border: 1px solid var(--or);
+    color: var(--or);
+    padding: 10px 28px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.4s;
+    font-weight: 400;
+  }
+  .btn-devis:hover {
+    background: var(--or);
+    color: var(--noir);
+  }
+
+  /* Mobile Menu */
+  .burger {
+    display: none;
+    flex-direction: column; gap: 5px;
+    background: none; border: none;
+    padding: 8px;
+  }
+  .burger span {
+    width: 26px; height: 1px;
+    background: var(--blanc);
+    display: block;
+    transition: all 0.4s;
+  }
+  .mobile-menu {
+    display: none;
+    position: fixed; top: 80px; left: 0; right: 0;
+    background: rgba(17,17,17,0.99);
+    padding: 40px;
+    flex-direction: column; gap: 24px;
+    z-index: 999;
+    border-top: 1px solid rgba(200,164,107,0.2);
+  }
+  .mobile-menu a {
+    color: var(--blanc);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-weight: 300;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(200,164,107,0.1);
+  }
+  .mobile-menu.open { display: flex; }
+
+  /* ===== HERO ===== */
+  .hero {
+    height: 100vh;
+    min-height: 700px;
+    position: relative;
+    display: flex; align-items: center;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      135deg,
+      #1a1208 0%,
+      #2a1f0f 25%,
+      #1c1510 50%,
+      #0f0c08 100%
+    );
+  }
+  /* Rich food-like texture overlay */
+  .hero-bg::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 30% 60%, rgba(200,164,107,0.12) 0%, transparent 60%),
+                radial-gradient(ellipse at 75% 20%, rgba(200,164,107,0.07) 0%, transparent 50%);
+  }
+  /* Decorative pattern */
+  .hero-pattern {
+    position: absolute; right: 0; top: 0; bottom: 0;
+    width: 50%;
+    background: linear-gradient(135deg, transparent 40%, rgba(200,164,107,0.04) 100%);
+    border-left: 1px solid rgba(200,164,107,0.08);
+  }
+  /* Gold line accent */
+  .hero-line {
+    position: absolute; left: 0; right: 0;
+    bottom: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--or), transparent);
+    opacity: 0.4;
+  }
+
+  /* Floating food illustrations (CSS only) */
+  .hero-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.15;
+  }
+  .hero-orb-1 { width: 500px; height: 500px; background: #C8A46B; top: -100px; right: -100px; }
+  .hero-orb-2 { width: 300px; height: 300px; background: #8B5E3C; bottom: 100px; left: 100px; }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 0 80px;
+    max-width: 820px;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-size: 0.62rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--or);
+    font-weight: 400;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.3s forwards;
+  }
+  .hero-tag::before {
+    content: '';
+    width: 40px; height: 1px;
+    background: var(--or);
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 6vw, 5.2rem);
+    font-weight: 300;
+    color: var(--blanc);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.5s forwards;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--or);
+  }
+  .hero-sub {
+    font-size: 0.9rem;
+    color: rgba(250,248,244,0.65);
+    max-width: 520px;
+    line-height: 1.9;
+    margin-bottom: 48px;
+    font-weight: 300;
+    letter-spacing: 0.03em;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.7s forwards;
+  }
+  .hero-btns {
+    display: flex; gap: 20px; flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.9s forwards;
+  }
+  .btn-primary {
+    background: var(--or);
+    color: var(--noir);
+    padding: 16px 40px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.4s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--or-light); transform: translateY(-2px); }
+  .btn-secondary {
+    background: transparent;
+    border: 1px solid rgba(250,248,244,0.3);
+    color: rgba(250,248,244,0.85);
+    padding: 16px 40px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 400;
+    transition: all 0.4s;
+    display: inline-block;
+  }
+  .btn-secondary:hover { border-color: var(--or); color: var(--or); }
+
+  .hero-stats {
+    position: absolute;
+    bottom: 60px; right: 80px;
+    display: flex; gap: 48px;
+    z-index: 2;
+    opacity: 0;
+    animation: fadeUp 0.9s 1.1s forwards;
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem;
+    font-weight: 300;
+    color: var(--or);
+    display: block;
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(250,248,244,0.5);
+    font-weight: 400;
+    display: block;
+    margin-top: 6px;
+  }
+  .stat-divider {
+    width: 1px;
+    background: rgba(200,164,107,0.3);
+    height: 40px;
+    align-self: center;
+  }
+
+  .scroll-hint {
+    position: absolute; bottom: 30px; left: 80px;
+    display: flex; align-items: center; gap: 12px;
+    color: rgba(250,248,244,0.35);
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    z-index: 2;
+    opacity: 0;
+    animation: fadeUp 1s 1.3s forwards;
+  }
+  .scroll-line {
+    width: 1px; height: 40px;
+    background: rgba(200,164,107,0.4);
+    animation: scrollAnim 2s infinite;
+  }
+
+  /* ===== SECTIONS GÉNÉRIQUES ===== */
+  section { overflow: hidden; }
+
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 60px;
+  }
+
+  .section-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: var(--or);
+    font-weight: 400;
+    display: flex; align-items: center; gap: 16px;
+    margin-bottom: 20px;
+  }
+  .section-label::before {
+    content: '';
+    width: 40px; height: 1px;
+    background: var(--or);
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.6rem);
+    font-weight: 300;
+    color: var(--noir);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+  .section-title em { font-style: italic; color: var(--or); }
+
+  /* ===== PRÉSENTATION ===== */
+  .presentation {
+    padding: 140px 0;
+    background: var(--blanc);
+  }
+  .pres-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    align-items: center;
+  }
+  .pres-left {}
+  .pres-text {
+    margin-top: 32px;
+    font-size: 0.88rem;
+    line-height: 2;
+    color: #555;
+    font-weight: 300;
+  }
+  .pres-features {
+    margin-top: 48px;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .pres-feature {
+    display: flex; gap: 16px; align-items: flex-start;
+  }
+  .pres-feature-icon {
+    width: 32px; height: 32px;
+    border: 1px solid rgba(200,164,107,0.3);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    color: var(--or);
+    font-size: 0.9rem;
+  }
+  .pres-feature-text {
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    color: var(--charbon);
+    font-weight: 400;
+    line-height: 1.5;
+  }
+  .pres-right {
+    position: relative;
+  }
+  .pres-img-main {
+    width: 100%;
+    height: 520px;
+    background: linear-gradient(135deg, #2a1f0f, #3d2b14, #1a1208);
+    position: relative;
+    overflow: hidden;
+  }
+  .pres-img-main::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 80%, rgba(200,164,107,0.2) 0%, transparent 60%);
+  }
+  /* Food visual representation */
+  .food-visual {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 16px;
+    opacity: 0.4;
+  }
+  .food-visual-line {
+    width: 120px; height: 1px;
+    background: var(--or);
+  }
+  .food-visual-text {
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--or);
+    font-size: 1.1rem;
+    letter-spacing: 0.2em;
+    font-style: italic;
+  }
+
+  .pres-img-accent {
+    position: absolute;
+    bottom: -30px; left: -30px;
+    width: 200px; height: 200px;
+    background: linear-gradient(135deg, #C8A46B, #D8C2A0);
+    opacity: 0.08;
+    border: 1px solid rgba(200,164,107,0.3);
+  }
+  .pres-img-badge {
+    position: absolute;
+    top: 30px; right: -20px;
+    background: var(--noir);
+    border: 1px solid rgba(200,164,107,0.3);
+    padding: 24px;
+    text-align: center;
+  }
+  .badge-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    font-weight: 300;
+    color: var(--or);
+    line-height: 1;
+    display: block;
+  }
+  .badge-txt {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(250,248,244,0.5);
+    display: block;
+    margin-top: 6px;
+  }
+
+  /* ===== PRESTATIONS ===== */
+  .prestations {
+    padding: 140px 0;
+    background: var(--noir);
+  }
+  .prestations .section-title { color: var(--blanc); }
+  .prestations .section-title em { color: var(--or); }
+  .pres-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 80px;
+  }
+  .pres-header-right {
+    font-size: 0.8rem;
+    color: rgba(250,248,244,0.4);
+    max-width: 280px;
+    text-align: right;
+    line-height: 1.9;
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+  .card {
+    position: relative;
+    overflow: hidden;
+    height: 420px;
+    background: var(--charbon);
+    transition: all 0.6s;
+    group: true;
+  }
+  .card:nth-child(1) { grid-column: span 2; }
+  .card:nth-child(4) { grid-column: span 2; }
+  .card-bg {
+    position: absolute; inset: 0;
+    transition: transform 0.7s ease;
+  }
+  .card:hover .card-bg { transform: scale(1.05); }
+
+  /* Unique color backgrounds for each card */
+  .card-1 .card-bg { background: linear-gradient(135deg, #1a0f08, #2d1a0c, #3a2010); }
+  .card-2 .card-bg { background: linear-gradient(135deg, #0d1a0d, #142a14, #1a351a); }
+  .card-3 .card-bg { background: linear-gradient(135deg, #1a1208, #2a1f0f, #1c1510); }
+  .card-4 .card-bg { background: linear-gradient(135deg, #0d0d1a, #14142a, #1a1a35); }
+  .card-5 .card-bg { background: linear-gradient(135deg, #1a0d0d, #2a1414, #35181a); }
+  .card-6 .card-bg { background: linear-gradient(135deg, #0f1a15, #142a1f, #18351f); }
+  .card-7 .card-bg { background: linear-gradient(135deg, #1a1508, #2a220f, #1c1a0d); }
+
+  .card-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(17,17,17,0.95) 30%, transparent 70%);
+    transition: opacity 0.5s;
+  }
+  .card:hover .card-overlay { opacity: 0.75; }
+
+  .card-gold-accent {
+    position: absolute; inset: 0;
+    border: 1px solid rgba(200,164,107,0);
+    transition: border-color 0.5s;
+    pointer-events: none;
+    z-index: 3;
+  }
+  .card:hover .card-gold-accent { border-color: rgba(200,164,107,0.3); }
+
+  .card-content {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 36px;
+    z-index: 2;
+  }
+  .card-icon {
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+    display: block;
+    opacity: 0.8;
+  }
+  .card-category {
+    font-size: 0.58rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--or);
+    font-weight: 400;
+    margin-bottom: 10px;
+    display: block;
+  }
+  .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.7rem;
+    font-weight: 300;
+    color: var(--blanc);
+    line-height: 1.1;
+    margin-bottom: 10px;
+  }
+  .card-desc {
+    font-size: 0.75rem;
+    color: rgba(250,248,244,0.5);
+    line-height: 1.8;
+    margin-bottom: 24px;
+    max-width: 380px;
+    font-weight: 300;
+    transform: translateY(10px);
+    opacity: 0;
+    transition: all 0.4s 0.1s;
+  }
+  .card:hover .card-desc { transform: none; opacity: 1; }
+  .card-btn {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--or);
+    text-decoration: none;
+    font-weight: 400;
+    transform: translateY(8px);
+    opacity: 0;
+    transition: all 0.4s 0.15s;
+  }
+  .card:hover .card-btn { transform: none; opacity: 1; }
+  .card-btn::after {
+    content: '→';
+    font-size: 0.9rem;
+    transition: transform 0.3s;
+  }
+  .card-btn:hover::after { transform: translateX(4px); }
+
+  /* Tags cloud in card */
+  .card-tags {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    margin-bottom: 16px;
+  }
+  .card-tag {
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    color: rgba(200,164,107,0.7);
+    border: 1px solid rgba(200,164,107,0.25);
+    padding: 3px 10px;
+    font-weight: 400;
+  }
+
+  /* ===== ÉVÉNEMENTS ===== */
+  .evenements {
+    padding: 140px 0;
+    background: var(--beige);
+  }
+  .ev-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-top: 80px;
+  }
+  .ev-card {
+    position: relative;
+    overflow: hidden;
+  }
+  .ev-img {
+    height: 280px;
+    position: relative;
+    overflow: hidden;
+  }
+  .ev-img-bg {
+    width: 100%; height: 100%;
+    transition: transform 0.7s;
+  }
+  .ev-card:hover .ev-img-bg { transform: scale(1.06); }
+
+  .ev-img-1 { background: linear-gradient(135deg, #1a0f08 0%, #3d2b14 50%, #2a1f0f 100%); }
+  .ev-img-2 { background: linear-gradient(135deg, #0a0a14 0%, #1a1a3d 50%, #0f0f2a 100%); }
+  .ev-img-3 { background: linear-gradient(135deg, #0a140a 0%, #1a3d1a 50%, #0f2a0f 100%); }
+  .ev-img-4 { background: linear-gradient(135deg, #140a0a 0%, #3d1a1a 50%, #2a0f0f 100%); }
+  .ev-img-5 { background: linear-gradient(135deg, #140f0a 0%, #3d2b1a 50%, #2a1f0f 100%); }
+  .ev-img-6 { background: linear-gradient(135deg, #0f140a 0%, #2b3d1a 50%, #1f2a0f 100%); }
+
+  .ev-img-inner {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 8px;
+    opacity: 0.35;
+  }
+  .ev-img-icon { font-size: 2.5rem; }
+  .ev-img-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.25em;
+    color: var(--or);
+    text-transform: uppercase;
+  }
+
+  .ev-content {
+    background: var(--blanc);
+    padding: 32px;
+    border-top: 2px solid var(--or);
+    transition: all 0.4s;
+  }
+  .ev-card:hover .ev-content { background: var(--noir); }
+  .ev-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--noir);
+    margin-bottom: 10px;
+    transition: color 0.4s;
+  }
+  .ev-card:hover .ev-name { color: var(--blanc); }
+  .ev-desc {
+    font-size: 0.75rem;
+    color: #777;
+    line-height: 1.8;
+    transition: color 0.4s;
+  }
+  .ev-card:hover .ev-desc { color: rgba(250,248,244,0.5); }
+  .ev-link {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 0.62rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--or);
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 20px;
+    display: block;
+  }
+
+  /* ===== GALERIE ===== */
+  .galerie {
+    padding: 140px 0;
+    background: var(--blanc);
+  }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 200px);
+    gap: 4px;
+    margin-top: 60px;
+  }
+  .gal-item {
+    overflow: hidden;
+    position: relative;
+  }
+  .gal-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+  .gal-item:nth-child(4) { grid-column: span 2; }
+  .gal-item:nth-child(7) { grid-column: span 2; }
+
+  .gal-bg {
+    width: 100%; height: 100%;
+    transition: transform 0.7s ease;
+  }
+  .gal-item:hover .gal-bg { transform: scale(1.08); }
+  .gal-overlay {
+    position: absolute; inset: 0;
+    background: rgba(200,164,107,0);
+    transition: background 0.4s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .gal-item:hover .gal-overlay { background: rgba(200,164,107,0.15); }
+  .gal-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.25em;
+    color: var(--blanc);
+    opacity: 0;
+    transition: opacity 0.4s;
+    text-transform: uppercase;
+  }
+  .gal-item:hover .gal-label { opacity: 1; }
+
+  /* Gallery colors */
+  .gal-1 { background: linear-gradient(135deg, #3d2b14, #C8A46B44, #1a0f08); }
+  .gal-2 { background: linear-gradient(135deg, #1a350d, #2d5a18, #1a350d); }
+  .gal-3 { background: linear-gradient(135deg, #350d1a, #5a1828, #350d1a); }
+  .gal-4 { background: linear-gradient(135deg, #2b1a3d, #451a66, #2b1a3d); }
+  .gal-5 { background: linear-gradient(135deg, #3d3014, #664f18, #3d3014); }
+  .gal-6 { background: linear-gradient(135deg, #0d2b1a, #14452c, #0d2b1a); }
+  .gal-7 { background: linear-gradient(135deg, #1a0808, #3d1414, #1a0808); }
+  .gal-8 { background: linear-gradient(135deg, #1a1a08, #3d3514, #1a1a08); }
+  .gal-9 { background: linear-gradient(135deg, #082b1a, #144533, #082b1a); }
+
+  /* ===== PROCESSUS ===== */
+  .processus {
+    padding: 140px 0;
+    background: var(--charbon);
+  }
+  .processus .section-title { color: var(--blanc); }
+  .processus .section-title em { color: var(--or); }
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    margin-top: 80px;
+    position: relative;
+  }
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 28px; left: 10%; right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(200,164,107,0.4), transparent);
+  }
+  .process-step {
+    padding: 0 20px;
+    text-align: center;
+    position: relative;
+  }
+  .step-num {
+    width: 56px; height: 56px;
+    border: 1px solid rgba(200,164,107,0.4);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 28px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    color: var(--or);
+    background: var(--charbon);
+    position: relative; z-index: 1;
+    transition: all 0.4s;
+  }
+  .process-step:hover .step-num {
+    background: var(--or);
+    color: var(--noir);
+    border-color: var(--or);
+  }
+  .step-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    color: var(--blanc);
+    font-weight: 400;
+    margin-bottom: 12px;
+  }
+  .step-desc {
+    font-size: 0.72rem;
+    color: rgba(250,248,244,0.4);
+    line-height: 1.8;
+    font-weight: 300;
+  }
+  .step-icon { font-size: 1.2rem; margin-bottom: 8px; display: block; }
+
+  /* ===== AVIS ===== */
+  .avis {
+    padding: 140px 0;
+    background: var(--blanc);
+  }
+  .avis-header { text-align: center; margin-bottom: 80px; }
+  .avis-header .section-label { justify-content: center; }
+  .avis-header .section-label::before { display: none; }
+  .avis-stars {
+    color: var(--or);
+    font-size: 1.2rem;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+    display: block;
+  }
+  .avis-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .avis-card {
+    padding: 48px 40px;
+    border: 1px solid rgba(200,164,107,0.15);
+    position: relative;
+    transition: all 0.4s;
+    background: var(--blanc);
+  }
+  .avis-card:hover {
+    border-color: rgba(200,164,107,0.5);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(200,164,107,0.08);
+  }
+  .avis-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem;
+    color: rgba(200,164,107,0.15);
+    line-height: 1;
+    position: absolute;
+    top: 20px; left: 32px;
+    font-style: italic;
+  }
+  .avis-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--charbon);
+    line-height: 1.7;
+    margin-bottom: 28px;
+    font-weight: 300;
+  }
+  .avis-stars-small {
+    color: var(--or);
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    margin-bottom: 16px;
+  }
+  .avis-author {
+    display: flex; align-items: center; gap: 16px;
+  }
+  .avis-avatar {
+    width: 44px; height: 44px;
+    background: linear-gradient(135deg, var(--or), var(--champagne));
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    color: var(--noir);
+  }
+  .avis-name {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--charbon);
+  }
+  .avis-event {
+    font-size: 0.65rem;
+    color: var(--or);
+    letter-spacing: 0.12em;
+    font-weight: 400;
+  }
+
+  /* ===== FAQ ===== */
+  .faq {
+    padding: 140px 0;
+    background: var(--beige);
+  }
+  .faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    margin-top: 60px;
+    align-items: start;
+  }
+  .faq-intro {
+    font-size: 0.88rem;
+    color: #666;
+    line-height: 2;
+    margin-top: 24px;
+  }
+  .faq-items { }
+  .faq-item {
+    border-bottom: 1px solid rgba(28,28,28,0.1);
+    padding: 24px 0;
+  }
+  .faq-q {
+    display: flex; justify-content: space-between; align-items: center;
+    cursor: pointer;
+    gap: 20px;
+  }
+  .faq-q-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: var(--charbon);
+    line-height: 1.3;
+  }
+  .faq-toggle {
+    width: 28px; height: 28px;
+    border: 1px solid rgba(200,164,107,0.4);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    color: var(--or);
+    font-size: 1rem;
+    transition: all 0.4s;
+  }
+  .faq-item.open .faq-toggle {
+    background: var(--or);
+    color: var(--noir);
+    transform: rotate(45deg);
+  }
+  .faq-a {
+    font-size: 0.78rem;
+    color: #666;
+    line-height: 1.9;
+    margin-top: 16px;
+    display: none;
+    font-weight: 300;
+  }
+  .faq-item.open .faq-a { display: block; }
+
+  /* ===== À PROPOS ===== */
+  .apropos {
+    padding: 140px 0;
+    background: var(--noir);
+  }
+  .apropos .section-title { color: var(--blanc); }
+  .apropos .section-title em { color: var(--or); }
+  .apropos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    align-items: center;
+    margin-top: 60px;
+  }
+  .apropos-text {
+    font-size: 0.88rem;
+    color: rgba(250,248,244,0.6);
+    line-height: 2;
+    font-weight: 300;
+    margin-bottom: 32px;
+  }
+  .valeurs {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 40px;
+  }
+  .valeur {
+    padding: 20px;
+    border: 1px solid rgba(200,164,107,0.15);
+    transition: border-color 0.4s;
+  }
+  .valeur:hover { border-color: rgba(200,164,107,0.5); }
+  .valeur-icon { font-size: 1.3rem; margin-bottom: 10px; display: block; }
+  .valeur-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: var(--blanc);
+    font-weight: 400;
+    margin-bottom: 4px;
+  }
+  .valeur-desc {
+    font-size: 0.68rem;
+    color: rgba(250,248,244,0.35);
+    letter-spacing: 0.06em;
+    font-weight: 300;
+  }
+  .apropos-visual {
+    position: relative;
+  }
+  .apropos-img {
+    width: 100%; height: 500px;
+    background: linear-gradient(135deg, #2a1f0f, #3d2b14, #C8A46B22);
+    position: relative;
+    overflow: hidden;
+  }
+  .apropos-img::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 70%, rgba(200,164,107,0.15) 0%, transparent 60%);
+  }
+  .apropos-quote {
+    position: absolute;
+    bottom: -20px; right: -20px;
+    background: var(--or);
+    padding: 32px 40px;
+    max-width: 280px;
+  }
+  .apropos-quote-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--noir);
+    font-weight: 400;
+    line-height: 1.5;
+  }
+  .apropos-quote-auth {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(17,17,17,0.6);
+    margin-top: 12px;
+    display: block;
+  }
+
+  /* ===== CONTACT ===== */
+  .contact {
+    padding: 140px 0;
+    background: var(--blanc);
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 100px;
+    margin-top: 60px;
+  }
+  .contact-info {}
+  .contact-info-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    color: var(--charbon);
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 28px;
+  }
+  .contact-info-title em { color: var(--or); font-style: italic; }
+  .contact-details { margin-top: 40px; }
+  .contact-detail {
+    display: flex; gap: 20px; align-items: flex-start;
+    margin-bottom: 28px;
+  }
+  .contact-detail-icon {
+    width: 40px; height: 40px;
+    border: 1px solid rgba(200,164,107,0.3);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    color: var(--or);
+    font-size: 1rem;
+  }
+  .contact-detail-text {
+    font-size: 0.78rem;
+    line-height: 1.7;
+    color: #666;
+    font-weight: 300;
+  }
+  .contact-detail-label {
+    display: block;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--or);
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .socials {
+    display: flex; gap: 12px;
+    margin-top: 40px;
+  }
+  .social-btn {
+    padding: 12px 24px;
+    border: 1px solid rgba(28,28,28,0.15);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--charbon);
+    text-decoration: none;
+    transition: all 0.4s;
+    font-weight: 400;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .social-btn:hover {
+    background: var(--noir);
+    color: var(--or);
+    border-color: var(--noir);
+  }
+  .whatsapp-btn {
+    display: flex; align-items: center; gap: 12px;
+    background: #25D366;
+    color: white;
+    padding: 14px 28px;
+    text-decoration: none;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    font-weight: 500;
+    margin-top: 20px;
+    transition: background 0.3s;
+  }
+  .whatsapp-btn:hover { background: #1aad54; }
+
+  /* Form */
+  .contact-form {}
+  .form-row {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .form-group {
+    margin-bottom: 20px;
+  }
+  .form-label {
+    display: block;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--or);
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+  .form-input, .form-select, .form-textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(28,28,28,0.2);
+    padding: 12px 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.82rem;
+    color: var(--charbon);
+    font-weight: 300;
+    outline: none;
+    transition: border-color 0.3s;
+    appearance: none;
+  }
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    border-bottom-color: var(--or);
+  }
+  .form-textarea { resize: vertical; min-height: 100px; }
+  .form-submit {
+    width: 100%;
+    background: var(--noir);
+    color: var(--or);
+    border: 1px solid var(--noir);
+    padding: 18px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-weight: 500;
+    cursor: none;
+    transition: all 0.4s;
+    margin-top: 12px;
+  }
+  .form-submit:hover {
+    background: var(--or);
+    color: var(--noir);
+    border-color: var(--or);
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: #0a0a0a;
+    border-top: 1px solid rgba(200,164,107,0.1);
+    padding: 80px 0 40px;
+  }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 60px;
+  }
+  .footer-brand {}
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    color: var(--blanc);
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+    display: block;
+  }
+  .footer-slogan {
+    font-size: 0.7rem;
+    font-style: italic;
+    color: var(--or);
+    letter-spacing: 0.08em;
+    margin-bottom: 24px;
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .footer-desc {
+    font-size: 0.72rem;
+    color: rgba(250,248,244,0.35);
+    line-height: 2;
+    font-weight: 300;
+  }
+  .footer-col-title {
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--or);
+    font-weight: 500;
+    margin-bottom: 24px;
+    display: block;
+  }
+  .footer-links {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .footer-links a {
+    font-size: 0.72rem;
+    color: rgba(250,248,244,0.4);
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+  }
+  .footer-links a:hover { color: var(--or); }
+  .footer-socials {
+    display: flex; gap: 12px;
+    margin-top: 20px;
+  }
+  .footer-social {
+    width: 36px; height: 36px;
+    border: 1px solid rgba(200,164,107,0.2);
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(250,248,244,0.4);
+    text-decoration: none;
+    font-size: 0.75rem;
+    transition: all 0.4s;
+  }
+  .footer-social:hover {
+    border-color: var(--or);
+    color: var(--or);
+    background: rgba(200,164,107,0.05);
+  }
+  .footer-bottom {
+    border-top: 1px solid rgba(200,164,107,0.08);
+    padding-top: 32px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 16px;
+  }
+  .footer-copy {
+    font-size: 0.65rem;
+    color: rgba(250,248,244,0.25);
+    letter-spacing: 0.08em;
+    font-weight: 300;
+  }
+  .footer-legal {
+    display: flex; gap: 28px;
+  }
+  .footer-legal a {
+    font-size: 0.62rem;
+    color: rgba(250,248,244,0.25);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    transition: color 0.3s;
+  }
+  .footer-legal a:hover { color: var(--or); }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes scrollAnim {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    50% { opacity: 0.8; transform: scaleY(0.7) translateY(10px); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+  .reveal-delay-5 { transition-delay: 0.5s; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1100px) {
+    header { padding: 0 30px; }
+    .container { padding: 0 30px; }
+    nav { display: none; }
+    .btn-devis { display: none; }
+    .burger { display: flex; }
+
+    .hero-content { padding: 0 30px; }
+    .hero-stats { right: 30px; gap: 28px; }
+    .scroll-hint { left: 30px; }
+
+    .cards-grid { grid-template-columns: 1fr 1fr; }
+    .card:nth-child(1), .card:nth-child(4) { grid-column: span 1; }
+
+    .pres-grid, .apropos-grid, .faq-grid, .contact-grid { grid-template-columns: 1fr; gap: 60px; }
+    .ev-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+    .gal-item:nth-child(1), .gal-item:nth-child(4), .gal-item:nth-child(7) { grid-column: span 1; }
+    .process-steps { grid-template-columns: 1fr 1fr; gap: 40px; }
+    .process-steps::before { display: none; }
+    .avis-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+  }
+
+  @media (max-width: 600px) {
+    header { padding: 0 20px; height: 64px; }
+    .container { padding: 0 20px; }
+    .hero-content { padding: 0 20px; }
+    .hero h1 { font-size: 2.2rem; }
+    .hero-stats { position: static; margin-top: 40px; justify-content: center; flex-wrap: wrap; }
+    .scroll-hint { display: none; }
+    .cards-grid { grid-template-columns: 1fr; }
+    .ev-grid { grid-template-columns: 1fr; }
+    .pres-features { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+    .process-steps { grid-template-columns: 1fr; }
+  }
+
+  /* Gold divider */
+  .gold-divider {
+    width: 60px; height: 1px;
+    background: var(--or);
+    margin: 24px 0;
+  }
+  .gold-divider.center { margin: 24px auto; }
+
+  /* CTA Band */
+  .cta-band {
+    background: var(--or);
+    padding: 60px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .cta-band-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    color: var(--noir);
+    font-weight: 300;
+    line-height: 1.2;
+  }
+  .cta-band-text em { font-style: italic; }
+  .btn-dark {
+    background: var(--noir);
+    color: var(--blanc);
+    padding: 16px 40px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.4s;
+    white-space: nowrap;
+  }
+  .btn-dark:hover { background: var(--charbon); }
+</style>
 </head>
-
 <body>
 
-  <!-- CUSTOM CURSOR -->
-  <div class="cursor"></div>
+<!-- Custom cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
-  <!-- ========================================================= -->
-  <!-- NAVBAR -->
-  <!-- ========================================================= -->
-
+<!-- ===== HEADER ===== -->
+<header id="header">
+  <a href="#accueil" class="logo">
+    La Maison Gourmande
+    <span>Traiteur Événementiel · Grenoble</span>
+  </a>
   <nav>
-
-    <div class="logo">
-      CBD<span>CONNECTION</span>
-    </div>
-
-    <div class="nav-links">
-      <a href="#">Accueil</a>
-      <a href="#">CBD Puissant</a>
-      <a href="#">Fleurs</a>
-      <a href="#">Résines</a>
-      <a href="#">Contact</a>
-    </div>
-
-    <a href="#" class="nav-btn">
-      Boutique
-    </a>
-
+    <a href="#prestations">Prestations</a>
+    <a href="#evenements">Événements</a>
+    <a href="#galerie">Galerie</a>
+    <a href="#apropos">À propos</a>
+    <a href="#avis">Avis</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
   </nav>
+  <a href="#contact" class="btn-devis">Demander un devis</a>
+  <button class="burger" id="burger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
 
-  <!-- ========================================================= -->
-  <!-- HERO -->
-  <!-- ========================================================= -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#prestations" onclick="closeMobile()">Prestations</a>
+  <a href="#evenements" onclick="closeMobile()">Événements</a>
+  <a href="#galerie" onclick="closeMobile()">Galerie</a>
+  <a href="#apropos" onclick="closeMobile()">À propos</a>
+  <a href="#avis" onclick="closeMobile()">Avis clients</a>
+  <a href="#faq" onclick="closeMobile()">FAQ</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+  <a href="#contact" class="btn-devis" onclick="closeMobile()" style="text-align:center;margin-top:12px;color:var(--or);border:1px solid var(--or);padding:14px;letter-spacing:0.2em;font-size:0.7rem;text-transform:uppercase;text-decoration:none;">Demander un devis</a>
+</div>
 
-  <section class="hero">
+<!-- ===== HERO ===== -->
+<section class="hero" id="accueil">
+  <div class="hero-bg">
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+  </div>
+  <div class="hero-pattern"></div>
+  <div class="hero-line"></div>
 
-    <div class="hero-content">
-
-      <div class="hero-subtitle">
-        CBD PREMIUM EXPERIENCE
-      </div>
-
-      <h1 class="hero-title">
-        Ultra Premium <br>
-        CBD Connection
-      </h1>
-
-      <p class="hero-text">
-        Découvrez une nouvelle génération de CBD premium avec une expérience immersive, moderne et haut de gamme inspirée des plus grandes marques lifestyle américaines.
-      </p>
-
-      <div class="hero-buttons">
-        <a href="#" class="btn-primary">
-          Découvrir les produits
-        </a>
-
-        <a href="#" class="btn-secondary">
-          Voir la collection
-        </a>
-      </div>
-
+  <div class="hero-content">
+    <span class="hero-tag">Traiteur événementiel premium · Grenoble & alentours</span>
+    <h1>Votre événement mérite une expérience<br><em>gourmande inoubliable.</em></h1>
+    <p class="hero-sub">Nous créons des prestations gourmandes haut de gamme pour transformer vos moments privés ou professionnels en souvenirs mémorables. Buffets élégants, animations sucrées, installations sur-mesure.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Demander un devis</a>
+      <a href="#prestations" class="btn-secondary">Découvrir nos prestations</a>
     </div>
+  </div>
 
-  </section>
-
-  <!-- ========================================================= -->
-  <!-- PRODUCTS -->
-  <!-- ========================================================= -->
-
-  <section class="products">
-
-    <h2 class="section-title">
-      CBD Puissant
-    </h2>
-
-    <p class="section-text">
-      Une sélection premium ultra qualitative avec une identité visuelle moderne, immersive et pensée pour maximiser les conversions.
-    </p>
-
-    <div class="product-grid">
-
-      <!-- CARD -->
-
-      <div class="product-card reveal">
-
-        <div class="product-image">
-          <img src="https://images.unsplash.com/photo-1603909223429-69bb7101f420?q=80&w=1200&auto=format&fit=crop" alt="">
-        </div>
-
-        <div class="product-content">
-
-          <div class="product-badge">
-            ULTRA PREMIUM
-          </div>
-
-          <h3 class="product-title">
-            Diablo US
-          </h3>
-
-          <p class="product-description">
-            Fleur CBD puissante avec un profil aromatique premium et une finition haut de gamme.
-          </p>
-
-          <div class="product-bottom">
-
-            <div class="price">
-              24€
-            </div>
-
-            <a href="#" class="add-cart">
-              Ajouter
-            </a>
-
-          </div>
-
-        </div>
-
-      </div>
-
-      <!-- CARD -->
-
-      <div class="product-card reveal">
-
-        <div class="product-image">
-          <img src="https://images.unsplash.com/photo-1583947581924-a6d01f7d7a1b?q=80&w=1200&auto=format&fit=crop" alt="">
-        </div>
-
-        <div class="product-content">
-
-          <div class="product-badge">
-            BEST SELLER
-          </div>
-
-          <h3 class="product-title">
-            Cali Green
-          </h3>
-
-          <p class="product-description">
-            Expérience premium inspirée de la culture cannabis californienne.
-          </p>
-
-          <div class="product-bottom">
-
-            <div class="price">
-              29€
-            </div>
-
-            <a href="#" class="add-cart">
-              Ajouter
-            </a>
-
-          </div>
-
-        </div>
-
-      </div>
-
-      <!-- CARD -->
-
-      <div class="product-card reveal">
-
-        <div class="product-image">
-          <img src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?q=80&w=1200&auto=format&fit=crop" alt="">
-        </div>
-
-        <div class="product-content">
-
-          <div class="product-badge">
-            EXCLUSIVE
-          </div>
-
-          <h3 class="product-title">
-            Purple Storm
-          </h3>
-
-          <p class="product-description">
-            Une expérience sensorielle premium avec un branding ultra moderne.
-          </p>
-
-          <div class="product-bottom">
-
-            <div class="price">
-              34€
-            </div>
-
-            <a href="#" class="add-cart">
-              Ajouter
-            </a>
-
-          </div>
-
-        </div>
-
-      </div>
-
+  <div class="hero-stats">
+    <div class="stat">
+      <span class="stat-num">200+</span>
+      <span class="stat-label">Événements réalisés</span>
     </div>
-
-  </section>
-
-  <!-- ========================================================= -->
-  <!-- ABOUT -->
-  <!-- ========================================================= -->
-
-  <section class="about">
-
-    <div class="about-image reveal">
-      <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200&auto=format&fit=crop" alt="">
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <span class="stat-num">98%</span>
+      <span class="stat-label">Clients satisfaits</span>
     </div>
-
-    <div class="about-content reveal">
-
-      <h2>
-        Une marque CBD nouvelle génération
-      </h2>
-
-      <p>
-        CBD Connection devient une expérience premium immersive pensée pour créer une identité forte, moderne et mémorable.
-      </p>
-
-      <p>
-        Le nouveau branding combine esthétique luxury, animations fluides, design moderne et optimisation conversion pour transformer votre boutique en véritable marque lifestyle.
-      </p>
-
-      <a href="#" class="btn-primary">
-        Explorer maintenant
-      </a>
-
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <span class="stat-num">5★</span>
+      <span class="stat-label">Note moyenne</span>
     </div>
+  </div>
 
-  </section>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    Découvrir
+  </div>
+</section>
 
-  <!-- ========================================================= -->
-  <!-- FOOTER -->
-  <!-- ========================================================= -->
-
-  <footer>
-
-    <div class="footer-top">
-
-      <div class="footer-brand">
-
-        <h3>
-          CBD CONNECTION
-        </h3>
-
-        <p>
-          Premium CBD experience — Dark luxury branding, immersive experience et identité visuelle moderne.
+<!-- ===== PRÉSENTATION ===== -->
+<section class="presentation" id="presentation">
+  <div class="container">
+    <div class="pres-grid">
+      <div class="pres-left reveal">
+        <div class="section-label">Notre savoir-faire</div>
+        <h2 class="section-title">Une expérience gourmande pensée pour vos <em>événements</em></h2>
+        <div class="gold-divider"></div>
+        <p class="pres-text">
+          Née d'une passion profonde pour la gastronomie et l'art de recevoir, La Maison Gourmande orchestre des prestations culinaires d'exception au cœur de Grenoble et ses alentours. Chaque prestation est pensée comme une œuvre unique, conçue sur mesure pour sublimer votre événement.
+          <br><br>
+          De l'installation soignée à la dernière bouchée, notre équipe garantit une expérience où élégance, raffinement et chaleur humaine se conjuguent pour créer des souvenirs inoubliables.
         </p>
-
+        <div class="pres-features">
+          <div class="pres-feature">
+            <div class="pres-feature-icon">✦</div>
+            <div class="pres-feature-text">Prestations 100% sur-mesure</div>
+          </div>
+          <div class="pres-feature">
+            <div class="pres-feature-icon">✦</div>
+            <div class="pres-feature-text">Installation soignée sur place</div>
+          </div>
+          <div class="pres-feature">
+            <div class="pres-feature-icon">✦</div>
+            <div class="pres-feature-text">Produits de qualité premium</div>
+          </div>
+          <div class="pres-feature">
+            <div class="pres-feature-icon">✦</div>
+            <div class="pres-feature-text">Service personnalisé</div>
+          </div>
+          <div class="pres-feature">
+            <div class="pres-feature-icon">✦</div>
+            <div class="pres-feature-text">Grenoble & déplacements</div>
+          </div>
+          <div class="pres-feature">
+            <div class="pres-feature-icon">✦</div>
+            <div class="pres-feature-text">Particuliers & professionnels</div>
+          </div>
+        </div>
       </div>
-
-      <div class="footer-links">
-
-        <ul>
-          <li>Accueil</li>
-          <li>Boutique</li>
-          <li>Produits</li>
-          <li>Contact</li>
-        </ul>
-
-        <ul>
-          <li>Instagram</li>
-          <li>TikTok</li>
-          <li>Discord</li>
-          <li>Twitter</li>
-        </ul>
-
+      <div class="pres-right reveal reveal-delay-2">
+        <div class="pres-img-main">
+          <div class="food-visual">
+            <div class="food-visual-line"></div>
+            <span class="food-visual-text">L'art de la table</span>
+            <div class="food-visual-line"></div>
+          </div>
+        </div>
+        <div class="pres-img-accent"></div>
+        <div class="pres-img-badge">
+          <span class="badge-num">7+</span>
+          <span class="badge-txt">Années d'excellence</span>
+        </div>
       </div>
+    </div>
+  </div>
+</section>
 
+<!-- ===== PRESTATIONS ===== -->
+<section class="prestations" id="prestations">
+  <div class="container">
+    <div class="pres-header">
+      <div class="reveal">
+        <div class="section-label" style="color:var(--or)">Nos offres</div>
+        <h2 class="section-title">Des prestations <em>raffinées</em><br>pour chaque occasion</h2>
+      </div>
+      <p class="pres-header-right reveal reveal-delay-2">Chaque prestation est imaginée et réalisée avec soin, pour s'adapter parfaitement à votre événement et à vos invités.</p>
     </div>
 
+    <div class="cards-grid">
+      <!-- Card 1 - Plateaux Sucrés -->
+      <div class="card card-1 reveal">
+        <div class="card-bg"></div>
+        <div class="card-overlay"></div>
+        <div class="card-gold-accent"></div>
+        <div class="card-content">
+          <span class="card-icon">🍓</span>
+          <span class="card-category">Douceurs</span>
+          <h3 class="card-title">Plateaux Sucrés</h3>
+          <div class="card-tags">
+            <span class="card-tag">Fruits de saison</span>
+            <span class="card-tag">Pâtisseries</span>
+            <span class="card-tag">Mignardises</span>
+            <span class="card-tag">Desserts fins</span>
+          </div>
+          <p class="card-desc">Une sélection de fruits raffinés, pâtisseries artisanales et mignardises élégantes disposées avec soin pour enchanter vos convives.</p>
+          <a href="#contact" class="card-btn">Demander un devis</a>
+        </div>
+      </div>
+
+      <!-- Card 2 - Plateaux Salés -->
+      <div class="card card-2 reveal reveal-delay-1">
+        <div class="card-bg"></div>
+        <div class="card-overlay"></div>
+        <div class="card-gold-accent"></div>
+        <div class="card-content">
+          <span class="card-icon">🧀</span>
+          <span class="card-category">Saveurs</span>
+          <h3 class="card-title">Plateaux Salés</h3>
+          <div class="card-tags">
+            <span class="card-tag">Fromages affinés</span>
+            <span class="card-tag">Charcuteries</span>
+            <span class="card-tag">Apéritifs</span>
+          </div>
+          <p class="card-desc">Fromages d'exception, charcuteries sélectionnées et buffets d'apéritifs pour des moments de partage et de convivialité.</p>
+          <a href="#contact" class="card-btn">Demander un devis</a>
+        </div>
+      </div>
+
+      <!-- Card 3 - Brunchs -->
+      <div class="card card-3 reveal reveal-delay-2">
+        <div class="card-bg"></div>
+        <div class="card-overlay"></div>
+        <div class="card-gold-accent"></div>
+        <div class="card-content">
+          <span class="card-icon">☀️</span>
+          <span class="card-category">Matins précieux</span>
+          <h3 class="card-title">Brunchs Premium</h3>
+          <div class="card-tags">
+            <span class="card-tag">Sur mesure</span>
+            <span class="card-tag">Personnalisés</span>
+          </div>
+          <p class="card-desc">Des brunchs somptueux pensés dans les moindres détails, alliant fraîcheur, élégance et générosité.</p>
+          <a href="#contact" class="card-btn">Demander un devis</a>
+        </div>
+      </div>
+
+      <!-- Card 4 - Crêpes / Gaufres -->
+      <div class="card card-4 reveal">
+        <div class="card-bg"></div>
+        <div class="card-overlay"></div>
+        <div class="card-gold-accent"></div>
+        <div class="card-content">
+          <span class="card-icon">🧇</span>
+          <span class="card-category">Animation gourmande</span>
+          <h3 class="card-title">Crêpes, Gaufres<br>& Pancakes</h3>
+          <div class="card-tags">
+            <span class="card-tag">Animation à la minute</span>
+            <span class="card-tag">Show culinaire</span>
+            <span class="card-tag">Garnitures premium</span>
+          </div>
+          <p class="card-desc">Une animation en direct qui transforme la dégustation en spectacle gourmand. Préparation minute pour un maximum de fraîcheur et d'émerveillement.</p>
+          <a href="#contact" class="card-btn">Demander un devis</a>
+        </div>
+      </div>
+
+      <!-- Card 5 - Buffets -->
+      <div class="card card-5 reveal reveal-delay-1">
+        <div class="card-bg"></div>
+        <div class="card-overlay"></div>
+        <div class="card-gold-accent"></div>
+        <div class="card-content">
+          <span class="card-icon">🍽️</span>
+          <span class="card-category">L'essentiel</span>
+          <h3 class="card-title">Buffets Haut de Gamme</h3>
+          <div class="card-tags">
+            <span class="card-tag">Privés</span>
+            <span class="card-tag">Professionnels</span>
+          </div>
+          <p class="card-desc">Buffets luxueux pour tous types d'événements, conçus pour impressionner et satisfaire les palais les plus exigeants.</p>
+          <a href="#contact" class="card-btn">Demander un devis</a>
+        </div>
+      </div>
+
+      <!-- Card 6 - Extras -->
+      <div class="card card-7 reveal reveal-delay-2">
+        <div class="card-bg"></div>
+        <div class="card-overlay"></div>
+        <div class="card-gold-accent"></div>
+        <div class="card-content">
+          <span class="card-icon">🎪</span>
+          <span class="card-category">Animations & Décoration</span>
+          <h3 class="card-title">Extras & Installations</h3>
+          <div class="card-tags">
+            <span class="card-tag">Barbe à papa</span>
+            <span class="card-tag">Popcorn</span>
+            <span class="card-tag">Fontaine chocolat</span>
+            <span class="card-tag">Candy bar</span>
+            <span class="card-tag">Décoration</span>
+          </div>
+          <p class="card-desc">Animations gourmandes originales et décoration événementielle pour créer une atmosphère féerique et mémorable.</p>
+          <a href="#contact" class="card-btn">Demander un devis</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <p class="cta-band-text">Votre prochain événement,<br><em>notre prochaine création.</em></p>
+  <a href="#contact" class="btn-dark">Obtenir un devis personnalisé →</a>
+</div>
+
+<!-- ===== ÉVÉNEMENTS ===== -->
+<section class="evenements" id="evenements">
+  <div class="container">
+    <div class="reveal" style="text-align:center; max-width:600px; margin:0 auto 80px;">
+      <div class="section-label" style="justify-content:center"><span style="width:40px;height:1px;background:var(--or);display:block"></span>Occasions</div>
+      <h2 class="section-title">Chaque événement<br>est une <em>histoire unique</em></h2>
+      <div class="gold-divider center"></div>
+    </div>
+    <div class="ev-grid">
+      <div class="ev-card reveal">
+        <div class="ev-img"><div class="ev-img-bg ev-img-1"><div class="ev-img-inner"><span class="ev-img-icon">💍</span><span class="ev-img-text">Mariage</span></div></div></div>
+        <div class="ev-content">
+          <h3 class="ev-name">Mariages</h3>
+          <p class="ev-desc">Des buffets d'exception pour le jour le plus beau. Chaque détail est pensé pour sublimer votre union.</p>
+          <a href="#contact" class="ev-link">Nous contacter →</a>
+        </div>
+      </div>
+      <div class="ev-card reveal reveal-delay-1">
+        <div class="ev-img"><div class="ev-img-bg ev-img-2"><div class="ev-img-inner"><span class="ev-img-icon">🏢</span><span class="ev-img-text">Entreprise</span></div></div></div>
+        <div class="ev-content">
+          <h3 class="ev-name">Entreprises</h3>
+          <p class="ev-desc">Séminaires, inaugurations, team building – des prestations professionnelles qui reflètent votre image.</p>
+          <a href="#contact" class="ev-link">Nous contacter →</a>
+        </div>
+      </div>
+      <div class="ev-card reveal reveal-delay-2">
+        <div class="ev-img"><div class="ev-img-bg ev-img-3"><div class="ev-img-inner"><span class="ev-img-icon">🎂</span><span class="ev-img-text">Anniversaire</span></div></div></div>
+        <div class="ev-content">
+          <h3 class="ev-name">Anniversaires</h3>
+          <p class="ev-desc">Célébrez chaque année avec une table gourmande digne de vos plus belles fêtes.</p>
+          <a href="#contact" class="ev-link">Nous contacter →</a>
+        </div>
+      </div>
+      <div class="ev-card reveal">
+        <div class="ev-img"><div class="ev-img-bg ev-img-4"><div class="ev-img-inner"><span class="ev-img-icon">👶</span><span class="ev-img-text">Baby Shower</span></div></div></div>
+        <div class="ev-content">
+          <h3 class="ev-name">Baby Shower</h3>
+          <p class="ev-desc">Accueillez la nouvelle vie avec douceur et élégance. Installations féeriques et gourmandises tendres.</p>
+          <a href="#contact" class="ev-link">Nous contacter →</a>
+        </div>
+      </div>
+      <div class="ev-card reveal reveal-delay-1">
+        <div class="ev-img"><div class="ev-img-bg ev-img-5"><div class="ev-img-inner"><span class="ev-img-icon">👨‍👩‍👧‍👦</span><span class="ev-img-text">Cousinade</span></div></div></div>
+        <div class="ev-content">
+          <h3 class="ev-name">Réceptions & Cousinades</h3>
+          <p class="ev-desc">Des retrouvailles familiales sublimées par des tables généreuses et chaleureuses.</p>
+          <a href="#contact" class="ev-link">Nous contacter →</a>
+        </div>
+      </div>
+      <div class="ev-card reveal reveal-delay-2">
+        <div class="ev-img"><div class="ev-img-bg ev-img-6"><div class="ev-img-inner"><span class="ev-img-icon">🎪</span><span class="ev-img-text">Réception</span></div></div></div>
+        <div class="ev-content">
+          <h3 class="ev-name">Réceptions Privées</h3>
+          <p class="ev-desc">Soirées privées, cocktails, dînatoires – nous créons l'atmosphère qui correspond à votre vision.</p>
+          <a href="#contact" class="ev-link">Nous contacter →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GALERIE ===== -->
+<section class="galerie" id="galerie">
+  <div class="container">
+    <div class="reveal" style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:0">
+      <div>
+        <div class="section-label">Portfolio</div>
+        <h2 class="section-title">Nos créations<br><em>en images</em></h2>
+      </div>
+      <a href="#contact" class="btn-devis" style="color:var(--or);border-color:var(--or);display:inline-block">Voir plus</a>
+    </div>
+    <div class="gallery-grid reveal reveal-delay-1">
+      <div class="gal-item"><div class="gal-bg gal-1"></div><div class="gal-overlay"><span class="gal-label">Buffet Mariage</span></div></div>
+      <div class="gal-item"><div class="gal-bg gal-2"></div><div class="gal-overlay"><span class="gal-label">Plateau Vert</span></div></div>
+      <div class="gal-item"><div class="gal-bg gal-3"></div><div class="gal-overlay"><span class="gal-label">Desserts</span></div></div>
+      <div class="gal-item"><div class="gal-bg gal-4"></div><div class="gal-overlay"><span class="gal-label">Candy Bar</span></div></div>
+      <div class="gal-item"><div class="gal-bg gal-5"></div><div class="gal-overlay"><span class="gal-label">Brunch Doré</span></div></div>
+      <div class="gal-item"><div class="gal-bg gal-6"></div><div class="gal-overlay"><span class="gal-label">Décoration</span></div></div>
+      <div class="gal-item"><div class="gal-bg gal-7"></div><div class="gal-overlay"><span class="gal-label">Plateaux Sucrés</span></div></div>
+      <div class="gal-item"><div class="gal-bg gal-8"></div><div class="gal-overlay"><span class="gal-label">Événement Pro</span></div></div>
+      <div class="gal-item"><div class="gal-bg gal-9"></div><div class="gal-overlay"><span class="gal-label">Fontaine Chocolat</span></div></div>
+    </div>
+    <p style="text-align:center;margin-top:20px;font-size:0.7rem;color:#aaa;letter-spacing:0.1em;font-style:italic">↑ Les photos de vos prestations réelles seront intégrées ici</p>
+  </div>
+</section>
+
+<!-- ===== PROCESSUS ===== -->
+<section class="processus">
+  <div class="container">
+    <div class="reveal" style="text-align:center">
+      <div class="section-label" style="justify-content:center"><span style="width:40px;height:1px;background:var(--or);display:block"></span>Notre méthode</div>
+      <h2 class="section-title">Comment ça<br><em>fonctionne ?</em></h2>
+      <div class="gold-divider center"></div>
+    </div>
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="step-num">01</div>
+        <span class="step-icon">💬</span>
+        <h3 class="step-title">Contact</h3>
+        <p class="step-desc">Échangez avec nous par téléphone, WhatsApp ou via notre formulaire. On vous répond rapidement.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-1">
+        <div class="step-num">02</div>
+        <span class="step-icon">📋</span>
+        <h3 class="step-title">Devis personnalisé</h3>
+        <p class="step-desc">Nous créons une proposition sur mesure adaptée à vos besoins, votre budget et vos envies.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-2">
+        <div class="step-num">03</div>
+        <span class="step-icon">🎯</span>
+        <h3 class="step-title">Préparation</h3>
+        <p class="step-desc">Notre équipe prépare votre prestation avec soin, en sélectionnant les meilleurs produits.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-3">
+        <div class="step-num">04</div>
+        <span class="step-icon">✨</span>
+        <h3 class="step-title">Installation</h3>
+        <p class="step-desc">Nous installons tout sur place avec élégance, dans les moindres détails, avant l'arrivée de vos invités.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-4">
+        <div class="step-num">05</div>
+        <span class="step-icon">🥂</span>
+        <h3 class="step-title">Expérience gourmande</h3>
+        <p class="step-desc">Vos invités profitent d'une expérience culinaire raffinée. Vous n'avez plus qu'à savourer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== AVIS CLIENTS ===== -->
+<section class="avis" id="avis">
+  <div class="container">
+    <div class="avis-header reveal">
+      <div class="section-label">Témoignages</div>
+      <h2 class="section-title">Ce que disent<br>nos <em>clients</em></h2>
+      <div class="gold-divider center"></div>
+      <span class="avis-stars">★★★★★</span>
+      <p style="font-size:0.78rem;color:#888;letter-spacing:0.04em">Note moyenne de 5/5 · +200 événements réalisés</p>
+    </div>
+    <div class="avis-grid">
+      <div class="avis-card reveal">
+        <span class="avis-quote">"</span>
+        <div class="avis-stars-small">★★★★★</div>
+        <p class="avis-text">Une prestation absolument magnifique pour notre mariage. Le buffet était d'une élégance rare, les produits d'une qualité exceptionnelle. Tous nos invités ont été émerveillés. Je recommande sans la moindre hésitation.</p>
+        <div class="avis-author">
+          <div class="avis-avatar">S</div>
+          <div>
+            <div class="avis-name">Sophie & Thomas M.</div>
+            <div class="avis-event">Mariage · Grenoble</div>
+          </div>
+        </div>
+      </div>
+      <div class="avis-card reveal reveal-delay-1">
+        <span class="avis-quote">"</span>
+        <div class="avis-stars-small">★★★★★</div>
+        <p class="avis-text">Nous avons fait appel à La Maison Gourmande pour notre séminaire annuel. Professionnalisme irréprochable, installation impeccable et buffets dignes des plus grands traiteurs. Notre équipe était impressionnée.</p>
+        <div class="avis-author">
+          <div class="avis-avatar">L</div>
+          <div>
+            <div class="avis-name">Laurent D.</div>
+            <div class="avis-event">Séminaire entreprise · Grenoble</div>
+          </div>
+        </div>
+      </div>
+      <div class="avis-card reveal reveal-delay-2">
+        <span class="avis-quote">"</span>
+        <div class="avis-stars-small">★★★★★</div>
+        <p class="avis-text">Pour l'anniversaire de ma mère, je voulais quelque chose d'exceptionnel. Le résultat a dépassé toutes mes attentes. La décoration, les plateaux, la fontaine chocolat... Un moment de magie pure. Merci infiniment !</p>
+        <div class="avis-author">
+          <div class="avis-avatar">C</div>
+          <div>
+            <div class="avis-name">Camille R.</div>
+            <div class="avis-event">Anniversaire · Voiron</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:60px">
+      <a href="#contact" class="btn-primary">Réserver ma prestation</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="faq-grid">
+      <div class="reveal">
+        <div class="section-label">Questions</div>
+        <h2 class="section-title">Vous avez des<br><em>questions ?</em></h2>
+        <div class="gold-divider"></div>
+        <p class="faq-intro">Nous sommes là pour répondre à toutes vos interrogations. N'hésitez pas à nous contacter directement si votre question ne figure pas ici.</p>
+        <a href="#contact" class="btn-primary" style="margin-top:32px;display:inline-block">Nous contacter</a>
+      </div>
+      <div class="faq-items reveal reveal-delay-2">
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span class="faq-q-text">Intervenez-vous hors de Grenoble ?</span>
+            <div class="faq-toggle">+</div>
+          </div>
+          <p class="faq-a">Oui, nous intervenons dans toute la région grenobloise et ses alentours. Des déplacements plus lointains peuvent être envisagés selon la nature et l'ampleur de votre événement. Contactez-nous pour en discuter.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span class="faq-q-text">Combien de temps à l'avance faut-il réserver ?</span>
+            <div class="faq-toggle">+</div>
+          </div>
+          <p class="faq-a">Nous recommandons de nous contacter 2 à 4 semaines à l'avance pour les petites réceptions, et 2 à 3 mois pour les grands événements comme les mariages ou séminaires d'entreprise. Plus tôt est toujours mieux pour garantir votre date.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span class="faq-q-text">Proposez-vous des prestations entièrement sur mesure ?</span>
+            <div class="faq-toggle">+</div>
+          </div>
+          <p class="faq-a">Absolument. Chaque prestation est conçue sur mesure selon vos souhaits, le thème de votre événement, le nombre d'invités et votre budget. Nous ne proposons pas de formules figées : votre événement est unique, notre offre l'est aussi.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span class="faq-q-text">Travaillez-vous avec des entreprises ?</span>
+            <div class="faq-toggle">+</div>
+          </div>
+          <p class="faq-a">Oui, nous accompagnons régulièrement des entreprises pour leurs séminaires, team buildings, inaugurations, pots d'entreprise et événements clients. Nous établissons des factures et pouvons travailler avec les services achats.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            <span class="faq-q-text">Vous occupez-vous de l'installation sur place ?</span>
+            <div class="faq-toggle">+</div>
+          </div>
+          <p class="faq-a">Oui, l'installation fait partie intégrante de notre prestation. Nous arrivons à l'avance pour dresser les tables, installer les décors et disposer les plateaux avec soin. Vous n'avez aucune logistique à gérer.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== À PROPOS ===== -->
+<section class="apropos" id="apropos">
+  <div class="container">
+    <div class="apropos-grid">
+      <div class="reveal">
+        <div class="section-label" style="color:var(--or)">Notre histoire</div>
+        <h2 class="section-title">Nés d'une passion pour<br>l'art de <em>recevoir</em></h2>
+        <div class="gold-divider"></div>
+        <p class="apropos-text">
+          La Maison Gourmande est née d'une conviction profonde : chaque événement mérite une dimension culinaire à la hauteur de son importance. Installés à Grenoble, nous avons construit notre réputation sur une exigence absolue de qualité, de créativité et de service.
+        </p>
+        <p class="apropos-text">
+          Nous intervenons aussi bien pour des particuliers souhaitant offrir à leurs proches une expérience mémorable, que pour des professionnels à la recherche d'un traiteur événementiel qui comprend les enjeux de l'image et de la représentation.
+        </p>
+        <div class="valeurs">
+          <div class="valeur">
+            <span class="valeur-icon">⭐</span>
+            <div class="valeur-name">Qualité</div>
+            <div class="valeur-desc">Produits d'exception sélectionnés avec rigueur</div>
+          </div>
+          <div class="valeur">
+            <span class="valeur-icon">🤝</span>
+            <div class="valeur-name">Proximité</div>
+            <div class="valeur-desc">Une relation sincère et personnalisée</div>
+          </div>
+          <div class="valeur">
+            <span class="valeur-icon">✨</span>
+            <div class="valeur-name">Élégance</div>
+            <div class="valeur-desc">Un soin du détail dans chaque prestation</div>
+          </div>
+          <div class="valeur">
+            <span class="valeur-icon">💛</span>
+            <div class="valeur-name">Partage</div>
+            <div class="valeur-desc">La gourmandise comme vecteur de liens</div>
+          </div>
+        </div>
+      </div>
+      <div class="apropos-visual reveal reveal-delay-2">
+        <div class="apropos-img">
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0.3;flex-direction:column;gap:12px">
+            <span style="font-size:3rem">🌟</span>
+            <span style="font-family:'Cormorant Garamond',serif;color:var(--or);font-size:1rem;letter-spacing:0.2em">La Maison Gourmande</span>
+          </div>
+        </div>
+        <div class="apropos-quote">
+          <p class="apropos-quote-text">« La gourmandise est l'art de transformer un repas en souvenir. »</p>
+          <span class="apropos-quote-auth">— Notre philosophie</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:0">
+      <div class="section-label" style="justify-content:center"><span style="width:40px;height:1px;background:var(--or);display:block"></span>Parlons de votre projet</div>
+      <h2 class="section-title">Créons ensemble<br>votre <em>expérience gourmande</em></h2>
+      <div class="gold-divider center"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="reveal">
+        <h3 class="contact-info-title">Grenoble &<br><em>ses alentours</em></h3>
+        <p style="font-size:0.8rem;color:#777;line-height:2;font-weight:300;">Nous serions ravis d'en apprendre davantage sur votre projet. Contactez-nous et recevez un devis personnalisé sous 24h.</p>
+        <div class="contact-details">
+          <div class="contact-detail">
+            <div class="contact-detail-icon">📞</div>
+            <div class="contact-detail-text">
+              <span class="contact-detail-label">Téléphone</span>
+              +33 (0)6 XX XX XX XX
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">✉️</div>
+            <div class="contact-detail-text">
+              <span class="contact-detail-label">Email</span>
+              contact@lamaisongourmande.fr
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">📍</div>
+            <div class="contact-detail-text">
+              <span class="contact-detail-label">Zone d'intervention</span>
+              Grenoble & alentours<br>Déplacements possibles
+            </div>
+          </div>
+        </div>
+        <div class="socials">
+          <a href="#" class="social-btn">📷 Instagram</a>
+          <a href="#" class="social-btn">🎵 TikTok</a>
+        </div>
+        <a href="https://wa.me/33600000000" class="whatsapp-btn">
+          💬 Nous écrire sur WhatsApp
+        </a>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <form onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Nom & Prénom</label>
+              <input type="text" class="form-input" placeholder="Marie Dupont" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Téléphone</label>
+              <input type="tel" class="form-input" placeholder="06 XX XX XX XX">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-input" placeholder="votre@email.fr" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Date de l'événement</label>
+              <input type="date" class="form-input">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Nombre d'invités</label>
+              <input type="number" class="form-input" placeholder="50">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Type d'événement</label>
+            <select class="form-select">
+              <option value="">Sélectionner...</option>
+              <option>Mariage</option>
+              <option>Anniversaire</option>
+              <option>Baby Shower</option>
+              <option>Séminaire / Entreprise</option>
+              <option>Réception privée</option>
+              <option>Cousinade</option>
+              <option>Inauguration</option>
+              <option>Autre</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Votre message</label>
+            <textarea class="form-textarea" placeholder="Décrivez votre événement et vos souhaits..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">Envoyer ma demande de devis</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="footer-logo">La Maison Gourmande</span>
+        <span class="footer-slogan">"Le goût qui rassemble vos événements."</span>
+        <p class="footer-desc">Traiteur événementiel premium à Grenoble. Buffets haut de gamme, brunchs, animations gourmandes et installations sur mesure pour particuliers et professionnels.</p>
+        <div class="footer-socials" style="margin-top:24px">
+          <a href="#" class="footer-social" title="Instagram">📷</a>
+          <a href="#" class="footer-social" title="TikTok">🎵</a>
+          <a href="#" class="footer-social" title="WhatsApp">💬</a>
+        </div>
+      </div>
+      <div>
+        <span class="footer-col-title">Navigation</span>
+        <ul class="footer-links">
+          <li><a href="#accueil">Accueil</a></li>
+          <li><a href="#prestations">Nos Prestations</a></li>
+          <li><a href="#evenements">Événements</a></li>
+          <li><a href="#galerie">Galerie</a></li>
+          <li><a href="#apropos">À propos</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <span class="footer-col-title">Prestations</span>
+        <ul class="footer-links">
+          <li><a href="#prestations">Plateaux Sucrés</a></li>
+          <li><a href="#prestations">Plateaux Salés</a></li>
+          <li><a href="#prestations">Brunchs Premium</a></li>
+          <li><a href="#prestations">Crêpes & Gaufres</a></li>
+          <li><a href="#prestations">Buffets</a></li>
+          <li><a href="#prestations">Extras & Décoration</a></li>
+        </ul>
+      </div>
+      <div>
+        <span class="footer-col-title">Contact</span>
+        <ul class="footer-links">
+          <li><a href="tel:+33600000000">+33 (0)6 XX XX XX XX</a></li>
+          <li><a href="mailto:contact@lamaisongourmande.fr">contact@lamaisongourmande.fr</a></li>
+          <li><a href="#">Grenoble & alentours</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#avis">Avis clients</a></li>
+        </ul>
+      </div>
+    </div>
     <div class="footer-bottom">
-
-      <div>
-        © 2026 CBD Connection — Tous droits réservés
+      <p class="footer-copy">© 2025 La Maison Gourmande · Traiteur Événementiel Premium Grenoble. Tous droits réservés.</p>
+      <div class="footer-legal">
+        <a href="#">Mentions légales</a>
+        <a href="#">CGV</a>
+        <a href="#">Politique de confidentialité</a>
       </div>
-
-      <div>
-        Premium UI Experience
-      </div>
-
     </div>
+  </div>
+</footer>
 
-  </footer>
+<script>
+// Custom cursor
+const cursor = document.getElementById('cursor');
+const cursorRing = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
 
-  <!-- ========================================================= -->
-  <!-- JAVASCRIPT -->
-  <!-- ========================================================= -->
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cursor.style.transform = `translate(${mx - 4}px, ${my - 4}px)`;
+});
 
-  <script>
+function animRing() {
+  rx += (mx - rx) * 0.12;
+  ry += (my - ry) * 0.12;
+  cursorRing.style.transform = `translate(${rx - 18}px, ${ry - 18}px)`;
+  requestAnimationFrame(animRing);
+}
+animRing();
 
-    /* ========================================================= */
-    /* CUSTOM CURSOR */
-    /* ========================================================= */
+document.querySelectorAll('a, button').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    cursorRing.style.width = '56px';
+    cursorRing.style.height = '56px';
+    cursorRing.style.opacity = '0.4';
+    cursor.style.opacity = '0.5';
+  });
+  el.addEventListener('mouseleave', () => {
+    cursorRing.style.width = '36px';
+    cursorRing.style.height = '36px';
+    cursorRing.style.opacity = '0.6';
+    cursor.style.opacity = '1';
+  });
+});
 
-    const cursor = document.querySelector('.cursor');
+// Header scroll
+window.addEventListener('scroll', () => {
+  document.getElementById('header').classList.toggle('scrolled', window.scrollY > 60);
+});
 
-    document.addEventListener('mousemove',(e)=>{
+// Reveal on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top = e.clientY + 'px';
+// Mobile menu
+const burger = document.getElementById('burger');
+const mobileMenu = document.getElementById('mobileMenu');
+let menuOpen = false;
+burger.addEventListener('click', () => {
+  menuOpen = !menuOpen;
+  mobileMenu.classList.toggle('open', menuOpen);
+  const spans = burger.querySelectorAll('span');
+  if (menuOpen) {
+    spans[0].style.cssText = 'transform:rotate(45deg) translate(4px, 4px)';
+    spans[1].style.opacity = '0';
+    spans[2].style.cssText = 'transform:rotate(-45deg) translate(4px, -4px)';
+  } else {
+    spans.forEach(s => s.style.cssText = '');
+  }
+});
+function closeMobile() {
+  menuOpen = false;
+  mobileMenu.classList.remove('open');
+  burger.querySelectorAll('span').forEach(s => s.style.cssText = '');
+}
 
-    });
+// FAQ
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
+}
 
-    /* ========================================================= */
-    /* GSAP ANIMATIONS */
-    /* ========================================================= */
+// Form submit
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.form-submit');
+  btn.textContent = '✓ Demande envoyée ! Nous vous répondons sous 24h.';
+  btn.style.background = '#1a5c2a';
+  btn.style.color = 'white';
+  btn.style.borderColor = '#1a5c2a';
+  setTimeout(() => {
+    btn.textContent = 'Envoyer ma demande de devis';
+    btn.style.cssText = '';
+    e.target.reset();
+  }, 4000);
+}
 
-    gsap.registerPlugin(ScrollTrigger);
-
-    gsap.from('.hero-subtitle',{
-      opacity:0,
-      y:30,
-      duration:1,
-    });
-
-    gsap.from('.hero-title',{
-      opacity:0,
-      y:80,
-      duration:1.4,
-      delay:.2,
-    });
-
-    gsap.from('.hero-text',{
-      opacity:0,
-      y:40,
-      duration:1,
-      delay:.5,
-    });
-
-    gsap.from('.hero-buttons',{
-      opacity:0,
-      y:40,
-      duration:1,
-      delay:.8,
-    });
-
-    gsap.utils.toArray('.reveal').forEach((element)=>{
-
-      gsap.from(element,{
-        opacity:0,
-        y:100,
-        duration:1.2,
-        ease:'power4.out',
-        scrollTrigger:{
-          trigger:element,
-          start:'top 85%',
-        }
-      });
-
-    });
-
-    /* ========================================================= */
-    /* NAVBAR BACKGROUND ON SCROLL */
-    /* ========================================================= */
-
-    window.addEventListener('scroll',()=>{
-
-      const nav = document.querySelector('nav');
-
-      if(window.scrollY > 50){
-
-        nav.style.background = 'rgba(0,0,0,0.85)';
-        nav.style.backdropFilter = 'blur(18px)';
-
-      }else{
-
-        nav.style.background = 'rgba(0,0,0,0.4)';
-
-      }
-
-    });
-
-    /* ========================================================= */
-    /* MAGNETIC BUTTON EFFECT */
-    /* ========================================================= */
-
-    const buttons = document.querySelectorAll('.btn-primary');
-
-    buttons.forEach(button=>{
-
-      button.addEventListener('mousemove',(e)=>{
-
-        const rect = button.getBoundingClientRect();
-
-        const x = e.clientX - rect.left - rect.width / 2;
-        const y = e.clientY - rect.top - rect.height / 2;
-
-        button.style.transform =
-          `translate(${x * 0.15}px, ${y * 0.15}px)`;
-
-      });
-
-      button.addEventListener('mouseleave',()=>{
-
-        button.style.transform = 'translate(0px,0px)';
-
-      });
-
-    });
-
-  </script>
-
+// Touch devices — hide custom cursor
+if ('ontouchstart' in window) {
+  document.body.style.cursor = 'auto';
+  cursor.style.display = 'none';
+  cursorRing.style.display = 'none';
+  document.querySelectorAll('a,button').forEach(el => el.style.cursor = 'pointer');
+}
+</script>
 </body>
 </html>
